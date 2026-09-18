@@ -29,13 +29,13 @@ a{color:var(--blue)}
 .bar{background:var(--black);color:var(--white);height:68px;display:flex;align-items:center;gap:40px;padding:0 64px;position:sticky;top:0;z-index:5}
 .lockup{display:flex;align-items:center;gap:14px;text-decoration:none;color:var(--white)}
 .lockup img{height:26px;display:block}
-.lockup span{font-family:Orbitron,"Space Grotesk",sans-serif;font-weight:700;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--n300);border-left:1px solid var(--n800);padding-left:14px}
+.lockup span{white-space:nowrap;font-family:Orbitron,"Space Grotesk",sans-serif;font-weight:700;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--n300);border-left:1px solid var(--n800);padding-left:14px}
 nav.main{display:flex;gap:4px;height:100%}
 nav.main a{color:var(--n400);text-decoration:none;font-size:14px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;display:flex;align-items:center;gap:8px;padding:0 14px;border-bottom:3px solid transparent;height:100%}
 nav.main a:hover{color:var(--white)}
 nav.main a[aria-current="page"]{color:var(--white);border-bottom-color:var(--blue-focus)}
 .count{background:var(--white);color:var(--black);border-radius:8px;font-size:11px;font-weight:700;padding:1px 7px;letter-spacing:0}
-.who{margin-left:auto;display:flex;align-items:center;gap:12px;font-size:14px;color:var(--n300)}
+.who{margin-left:auto;white-space:nowrap;display:flex;align-items:center;gap:12px;font-size:14px;color:var(--n300)}
 .who b{color:var(--white);font-weight:600}
 .avatar{width:36px;height:36px;border-radius:50%;background:var(--n800);color:var(--white);display:grid;place-items:center;font-weight:600;font-size:13px}
 
@@ -191,6 +191,51 @@ body.shot .bar{position:static}
   .hide-sm{display:none}
 }
 @media (prefers-reduced-motion:no-preference){.prog i{transition:width .6s ease}}
+
+/* Added for the working version: controls, detail panels, empty states. */
+.seg{display:inline-flex;border:1px solid var(--n300);border-radius:8px;overflow:hidden;background:var(--white)}
+.seg button{font:inherit;font-size:14px;font-weight:500;border:0;background:none;padding:9px 16px;cursor:pointer;color:var(--muted);min-height:40px}
+.seg button+button{border-left:1px solid var(--n300)}
+.seg button[aria-pressed="true"]{background:var(--black);color:var(--white);font-weight:600}
+.rowbtn{cursor:pointer}
+.rowbtn[aria-selected="true"] td{background:var(--blue-50)}
+.rowbtn[aria-selected="true"] td:first-child{box-shadow:inset 3px 0 0 var(--blue-focus)}
+.share{height:4px;background:var(--n100);border-radius:2px;min-width:80px}
+.share i{display:block;height:100%;background:var(--blue);border-radius:2px}
+td.num,th.num{text-align:right}
+.panel{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:28px;display:grid;gap:20px;align-content:start}
+.panel h2{font-size:24px;font-weight:600;margin:4px 0 0}
+.miles{list-style:none;margin:0;padding:0;display:grid;gap:12px;font-size:14px}
+.miles li{display:grid;grid-template-columns:22px 1fr auto;gap:10px;align-items:center}
+.miles .dot{width:18px;height:18px;border-radius:50%;border:2px solid var(--n300);display:grid;place-items:center}
+.miles .done .dot{background:var(--black);border-color:var(--black)}
+.miles .done .dot::after{content:"";width:6px;height:9px;border:solid var(--white);border-width:0 2px 2px 0;transform:rotate(45deg) translate(-1px,-1px)}
+.miles .now .dot{border-color:var(--blue-focus);box-shadow:0 0 0 3px var(--blue-100)}
+.miles time{color:var(--muted);font-size:13px}
+.empty{padding:32px 24px;display:grid;gap:6px;justify-items:start}
+.empty b{font-size:16px;font-weight:600}
+.empty span{font-size:14px;color:var(--muted)}
+.err{color:var(--err);font-size:13px;margin:6px 0 0}
+textarea[aria-invalid="true"]{border-color:var(--err)}
+.bviz{display:grid;gap:12px}
+.bviz .r{display:grid;grid-template-columns:90px 1fr 70px;gap:12px;align-items:center;font-size:14px}
+.bviz .t{height:10px;background:var(--n100);border-radius:2px}
+.bviz .t i{display:block;height:100%;border-radius:2px;background:var(--n500)}
+.bviz .t i.b{background:var(--blue)}
+.sends{list-style:none;margin:0;padding:0;border:1px solid var(--border);border-radius:12px}
+.sends li{display:grid;grid-template-columns:70px 1fr;gap:12px;padding:12px 16px;border-bottom:1px solid var(--border);font-size:14px}
+.sends li:last-child{border-bottom:0}
+.sends time{color:var(--muted)}
+.sends b{font-weight:600;display:block}
+.sends span{color:var(--muted);font-size:13px}
+.rlist{list-style:none;margin:0;padding:0}
+.rlist li{display:grid;grid-template-columns:1.4fr repeat(3,1fr) auto;gap:16px;align-items:center;padding:16px 0;border-top:1px solid var(--border);font-size:14px}
+.rlist li:first-child{border-top:0}
+.rlist b{font-weight:600;display:block}
+.rlist span{color:var(--muted);font-size:13px}
+.rlist .n{font-size:18px;font-weight:500}
+.toolbar{display:flex;gap:16px;align-items:center;flex-wrap:wrap}
+@media (max-width:1100px){.rlist li{grid-template-columns:1fr 1fr}}
 </style>
 </head>
 <body>
@@ -204,83 +249,59 @@ body.shot .bar{position:static}
   <a class="lockup" href="#home" aria-label="XPM Client Portal home"><img src="assets/xpm-white.svg" alt="XPM"><span>Client Portal</span></a>
   <nav class="main" aria-label="Portal">
     <a href="#home" data-view="home">Home</a>
-    <a href="#home" data-soon="Performance">Performance</a>
-    <a href="#home" data-soon="Projects">Projects</a>
-    <a href="#approvals" data-view="approvals">Approvals <span class="count" aria-label="3 pending">3</span></a>
-    <a href="#home" data-soon="Reports">Reports</a>
+    <a href="#performance" data-view="performance">Performance</a>
+    <a href="#projects" data-view="projects">Projects</a>
+    <a href="#approvals" data-view="approvals">Approvals <span class="count" id="navcount"></span></a>
+    <a href="#reports" data-view="reports">Reports</a>
   </nav>
   <div class="who"><span><b>Maya Chen</b> · Northline Outfitters</span><div class="avatar" aria-hidden="true">MC</div></div>
 </header>
 
-<!-- ───────────────────────── HOME ───────────────────────── -->
+<!-- ───────── HOME ───────── -->
 <main class="view" id="home">
   <div class="head">
     <div>
       <p class="eyebrow">Q3 2026 · Week 12 of 13</p>
       <h1>Northline at a glance</h1>
-      <p class="lede"><b>3 of 4 goals are on track.</b> Lead volume is behind pace, and 3 items need your decision before the fall launch on Sep 23.</p>
+      <p class="lede" id="lede"></p>
     </div>
-    <a class="btn secondary" href="#home" data-soon="The September report">Download September report</a>
+    <button class="btn secondary" type="button" data-download="q3">Download Q3 summary</button>
   </div>
-
   <div class="grid">
-    <!-- 1. Decisions first: the only thing on this page that is blocked on the client -->
-    <section class="card decide s12" aria-labelledby="dec-h">
-      <div class="top">
-        <div><p class="eyebrow" style="margin:0 0 4px">Needs your decision</p><h2 id="dec-h">3 approvals are holding up the fall launch</h2></div>
-        <a class="btn primary" href="#approvals">Review approvals</a>
-      </div>
-      <ul class="dlist">
-        <li><div><b>Fall campaign ad set, 6 creatives</b><span>Revised after your notes on Sep 15 · Paid social</span></div><span class="chip info">Revision 2</span><span class="due soon">Due tomorrow</span></li>
-        <li><div><b>Move $3,000 from Display to Search</b><span>Search leads cost $29, Display leads cost $52 · Paid media</span></div><span class="chip warn">Budget change</span><span class="due soon">Due Sep 20</span></li>
-        <li><div><b>October email calendar, 5 sends</b><span>First draft · Email</span></div><span class="chip neu">Pending review</span><span class="due">Due Sep 22</span></li>
-      </ul>
-    </section>
+    <section class="card decide s12" aria-labelledby="dec-h" id="decide"></section>
 
-    <!-- 2. Goals and KPIs, each with its target and a status in words -->
     <section class="card metric s3" aria-label="Revenue from marketing">
       <div class="l">Revenue from marketing <span class="chip ok">On track</span></div>
-      <div class="v">$412k</div>
-      <div class="t">Goal $450k this quarter</div>
+      <div class="v">$412k</div><div class="t">Goal $450k this quarter</div>
       <div class="prog" role="progressbar" aria-valuenow="92" aria-valuemin="0" aria-valuemax="100"><i style="width:92%"></i></div>
       <div class="delta"><svg><use href="#up"/></svg>12% vs Q2</div>
     </section>
     <section class="card metric s3" aria-label="Qualified leads">
       <div class="l">Qualified leads <span class="chip warn">At risk</span></div>
-      <div class="v">184</div>
-      <div class="t">Goal 220 · on pace for 194</div>
+      <div class="v">184</div><div class="t">Goal 220 · on pace for 194</div>
       <div class="prog" role="progressbar" aria-valuenow="84" aria-valuemin="0" aria-valuemax="100"><i style="width:84%"></i></div>
       <div class="delta"><svg><use href="#down"/></svg>10% behind pace</div>
     </section>
     <section class="card metric s3" aria-label="Cost per lead">
       <div class="l">Cost per lead <span class="chip ok">On track</span></div>
-      <div class="v">$38</div>
-      <div class="t">Target $45 or less</div>
+      <div class="v">$38</div><div class="t">Target $45 or less</div>
       <div class="prog" role="progressbar" aria-valuenow="84" aria-valuemin="0" aria-valuemax="100"><i style="width:84%"></i></div>
       <div class="delta"><svg><use href="#down"/></svg>$6 lower than Q2</div>
     </section>
     <section class="card metric s3" aria-label="Organic sessions">
       <div class="l">Organic sessions <span class="chip ok">Goal met</span></div>
-      <div class="v">48.2k</div>
-      <div class="t">Goal 45k</div>
+      <div class="v">48.2k</div><div class="t">Goal 45k</div>
       <div class="prog" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"><i style="width:100%"></i></div>
       <div class="delta"><svg><use href="#up"/></svg>7% above goal</div>
     </section>
 
-    <!-- 3. The one trend worth watching, and what it means -->
     <section class="card chart s7" aria-labelledby="ch-h">
-      <div class="ch"><h2 id="ch-h">Qualified leads by week</h2><p>Target pace vs actual</p></div>
+      <div class="ch"><h2 id="ch-h">Qualified leads by week</h2><a class="btn link" href="#performance">Open performance</a></div>
       <svg viewBox="0 0 640 240" role="img" aria-label="Weekly qualified leads for 12 weeks against a target pace of 17 a week. Actual fell below pace from week 33.">
-        <g stroke="#E2E2E3" stroke-width="1">
-          <line x1="40" y1="30" x2="630" y2="30"/><line x1="40" y1="90" x2="630" y2="90"/><line x1="40" y1="150" x2="630" y2="150"/><line x1="40" y1="210" x2="630" y2="210"/>
-        </g>
-        <g fill="#7D8185" font-size="11" font-family="Space Grotesk">
-          <text x="30" y="34" text-anchor="end">24</text><text x="30" y="94" text-anchor="end">16</text><text x="30" y="154" text-anchor="end">8</text><text x="30" y="214" text-anchor="end">0</text>
-          <text x="40" y="232">Wk 27</text><text x="335" y="232" text-anchor="middle">Wk 33</text><text x="630" y="232" text-anchor="end">Wk 38</text>
-        </g>
+        <g stroke="#E2E2E3" stroke-width="1"><line x1="40" y1="30" x2="630" y2="30"/><line x1="40" y1="90" x2="630" y2="90"/><line x1="40" y1="150" x2="630" y2="150"/><line x1="40" y1="210" x2="630" y2="210"/></g>
+        <g fill="#7D8185" font-size="11" font-family="Space Grotesk"><text x="30" y="34" text-anchor="end">24</text><text x="30" y="94" text-anchor="end">16</text><text x="30" y="154" text-anchor="end">8</text><text x="30" y="214" text-anchor="end">0</text><text x="40" y="232">Wk 27</text><text x="335" y="232" text-anchor="middle">Wk 33</text><text x="630" y="232" text-anchor="end">Wk 38</text></g>
         <line x1="40" y1="82.5" x2="630" y2="82.5" stroke="#7D8185" stroke-width="2" stroke-dasharray="6 5"/>
-        <polyline fill="none" stroke="#005EB5" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"
-          points="40.0,90.0 93.6,75.0 147.3,82.5 200.9,67.5 254.5,75.0 308.2,82.5 361.8,97.5 415.5,105.0 469.1,112.5 522.7,97.5 576.4,120.0 630.0,135.0"/>
+        <polyline fill="none" stroke="#005EB5" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" points="40.0,90.0 93.6,75.0 147.3,82.5 200.9,67.5 254.5,75.0 308.2,82.5 361.8,97.5 415.5,105.0 469.1,112.5 522.7,97.5 576.4,120.0 630.0,135.0"/>
         <circle cx="630" cy="135" r="5" fill="#005EB5"/>
         <text x="620" y="160" text-anchor="end" font-size="12" font-weight="600" fill="#1A1C1D" font-family="Space Grotesk">10 this week</text>
         <text x="620" y="74" text-anchor="end" font-size="12" fill="#5F6366" font-family="Space Grotesk">Pace: 17 a week</text>
@@ -291,144 +312,311 @@ body.shot .bar{position:static}
     <section class="card s5" aria-labelledby="in-h">
       <div class="ch"><h2 id="in-h">What we are seeing</h2><p>Updated Sep 17</p></div>
       <div class="ins">
-        <article><h3>Search is carrying lead volume</h3><p>Search leads cost $29, Display leads cost $52. Moving budget to Search is the fastest way back to pace.</p><a class="act" href="#approvals">Review the budget change</a></article>
-        <article><h3>Leads slowed after week 32</h3><p>The summer promotion ended and nothing replaced it. The fall launch is scheduled to fill that gap.</p><a class="act" href="#approvals">Approve the fall ad set</a></article>
-        <article><h3>The category page rewrite worked</h3><p>Organic sessions beat goal by 7% after the new page template went live.</p><a class="act" href="#home" data-soon="The page roadmap">See which pages are next</a></article>
+        <article><h3>Search is carrying lead volume</h3><p>Search leads cost $29, Display leads cost $52. Moving budget to Search is the fastest way back to pace.</p><a class="act" href="#approvals/budget">Review the budget change</a></article>
+        <article><h3>Leads slowed after week 32</h3><p>The summer promotion ended and nothing replaced it. The fall launch is scheduled to fill that gap.</p><a class="act" href="#approvals/adset">Review the fall ad set</a></article>
+        <article><h3>The category page rewrite worked</h3><p>Organic sessions beat goal by 7% after the new page template went live.</p><a class="act" href="#projects/pages">See which pages are next</a></article>
       </div>
     </section>
 
-    <!-- 4. Work in flight, with an owner and a next step on every row -->
     <section class="card s8" aria-labelledby="pr-h">
-      <div class="ch"><h2 id="pr-h">Current projects</h2><a class="btn link" href="#home" data-soon="The Projects screen">All projects</a></div>
-      <table>
-        <thead><tr><th>Project</th><th>Status</th><th class="hide-sm">Owner</th><th>Due</th><th class="hide-sm">Next step</th></tr></thead>
-        <tbody>
-          <tr><td class="name"><b>Fall campaign launch</b><span>Paid social and search</span></td><td><span class="chip warn">Waiting on you</span></td><td class="hide-sm">Ana, XPM</td><td>Sep 23</td><td class="hide-sm">Your approval of the ad set</td></tr>
-          <tr><td class="name"><b>CRM lead scoring</b><span>Routes hot leads to your sales inbox</span></td><td><span class="chip info">In progress</span></td><td class="hide-sm">Leo, XPM</td><td>Sep 30</td><td class="hide-sm">Testing on last month's leads</td></tr>
-          <tr><td class="name"><b>Q4 reporting dashboard</b><span>One view of spend, leads and revenue</span></td><td><span class="chip neu">Pending review</span></td><td class="hide-sm">Leo, XPM</td><td>Oct 3</td><td class="hide-sm">Walkthrough on the Sep 26 call</td></tr>
-          <tr><td class="name"><b>Category page rewrite</b><span>12 pages, new template</span></td><td><span class="chip ok">Live</span></td><td class="hide-sm">Sam, XPM</td><td>Done Sep 2</td><td class="hide-sm">Roll out to 8 more pages</td></tr>
-        </tbody>
-      </table>
+      <div class="ch"><h2 id="pr-h">Current projects</h2><a class="btn link" href="#projects">All projects</a></div>
+      <table><thead><tr><th>Project</th><th>Status</th><th class="hide-sm">Owner</th><th>Due</th><th class="hide-sm">Next step</th></tr></thead><tbody id="homeprojects"></tbody></table>
     </section>
 
     <section class="card s4" aria-labelledby="rp-h">
       <div class="ch"><h2 id="rp-h">Recent progress</h2><p>Last 14 days</p></div>
-      <ul class="tl">
-        <li><time datetime="2026-09-17">Sep 17</time><div><b>Ad set revised</b><br>All 6 creatives updated from your notes</div></li>
-        <li><time datetime="2026-09-15">Sep 15</time><div><b>Search campaigns restructured</b><br>Cost per lead down from $41 to $29</div></li>
-        <li><time datetime="2026-09-09">Sep 9</time><div><b>Lead scoring model drafted</b><br>Built on 1,140 past leads</div></li>
-        <li><time datetime="2026-09-02">Sep 2</time><div><b>Category pages live</b><br>12 pages on the new template</div></li>
-      </ul>
+      <ul class="tl" id="progress"></ul>
     </section>
 
-    <!-- 5. Next steps, split by who owns them -->
     <section class="card s12" aria-labelledby="ns-h">
       <div class="ch"><h2 id="ns-h">Recommended next steps</h2><p>Agreed on the Sep 12 call</p></div>
-      <ol class="steps">
-        <li><span class="n">01</span><span class="owner">You</span><b>Approve the fall ad set and budget change</b><span>Both are needed for the Sep 23 launch.</span></li>
-        <li><span class="n">02</span><span class="owner">You</span><b>Give XPM access to Shopify</b><span>So revenue in this portal comes from orders, not estimates.</span></li>
-        <li><span class="n">03</span><span class="owner">XPM</span><b>Bring a Q4 plan to the Sep 26 call</b><span>Goals, budget and the pages to rewrite next.</span></li>
-      </ol>
+      <ol class="steps" id="steps"></ol>
     </section>
   </div>
 </main>
 
-<!-- ───────────────────────── APPROVALS ───────────────────────── -->
-<main class="view" id="approvals" hidden>
+<!-- ───────── PERFORMANCE ───────── -->
+<main class="view" id="performance" hidden>
   <div class="head">
-    <div>
-      <p class="eyebrow">Approvals</p>
-      <h1>3 items need your decision</h1>
-      <p class="lede">Nothing goes live without your approval. Each item shows what changed and what happens next.</p>
-    </div>
+    <div><p class="eyebrow">Performance</p><h1>Where leads and revenue come from</h1><p class="lede">Every channel XPM runs for Northline, with spend, leads and what each lead costs.</p></div>
+    <div class="seg" role="group" aria-label="Date range"><button type="button" data-range="q3" aria-pressed="true">Q3 to date</button><button type="button" data-range="d30" aria-pressed="false">Last 30 days</button></div>
   </div>
-
-  <nav class="tabs" aria-label="Approval status">
-    <a href="#approvals" aria-selected="true">Pending (3)</a>
-    <a href="#approvals" aria-selected="false" data-soon="The Changes requested list">Changes requested (1)</a>
-    <a href="#approvals" aria-selected="false" data-soon="The Approved list">Approved (14)</a>
-  </nav>
-
-  <div class="grid">
-    <div class="queue s4">
-      <a class="qitem" href="#approvals" aria-current="true">
-        <div class="row"><b>Fall campaign ad set</b><span class="chip info">Revision 2</span></div>
-        <span>6 creatives · Paid social · Due tomorrow</span>
-      </a>
-      <a class="qitem" href="#approvals" data-soon="The budget change review">
-        <div class="row"><b>Move $3,000 to Search</b><span class="chip warn">Budget</span></div>
-        <span>From Display · Paid media · Due Sep 20</span>
-      </a>
-      <a class="qitem" href="#approvals" data-soon="The email calendar review">
-        <div class="row"><b>October email calendar</b><span class="chip neu">Draft</span></div>
-        <span>5 sends · Email · Due Sep 22</span>
-      </a>
-    </div>
-
-    <section class="review s8" aria-labelledby="rv-h">
-      <div class="rh">
-        <div><p class="eyebrow" style="margin:0">Paid social · Fall campaign</p><h2 id="rv-h">Fall campaign ad set</h2></div>
-        <span class="chip info">Revision 2 of 2</span>
-      </div>
-      <div class="rbody">
-        <div class="asset">
-          <p class="sub3" style="margin:0">Creative 1 of 6</p>
-          <div class="creative">
-            <div class="img"><b>Built for the first cold morning.</b><span>Fall layers, in stock now</span></div>
-            <div class="copy"><b>Northline Outfitters</b><span>Layer up before the weather does. Free shipping over $75.</span></div>
-          </div>
-          <div class="thumbs" aria-label="All creatives"><div class="sel">1</div><div>2</div><div>3</div><div>4</div><div>5</div><div>6</div></div>
-        </div>
-        <div class="meta">
-          <dl class="kv">
-            <dt>Channel</dt><dd>Instagram and Facebook</dd>
-            <dt>Budget</dt><dd>$8,000 over 3 weeks</dd>
-            <dt>Launch</dt><dd>Sep 23</dd>
-            <dt>Owner</dt><dd>Ana, XPM</dd>
-          </dl>
-          <div><p class="sub3">What changed since your notes</p>
-            <ul class="changed"><li>Headlines shortened on all 6 creatives</li><li>Price removed from creative 3</li><li>Free-shipping line added to every caption</li></ul>
-          </div>
-          <div><p class="sub3">History</p>
-            <ul class="hist"><li><time>Sep 17</time><span>Revision 2 sent by Ana</span></li><li><time>Sep 15</time><span>You requested changes: "shorter headlines, no prices"</span></li><li><time>Sep 12</time><span>Revision 1 sent</span></li></ul>
-          </div>
-          <div><label for="note">Note to XPM (optional)</label><textarea id="note" placeholder="Add a note for Ana"></textarea><p class="help">Required only if you request changes.</p></div>
-        </div>
-      </div>
-      <div class="rfoot">
-        <span class="help" style="margin:0">If approved, the campaign goes live on Sep 23.</span>
-        <div class="acts"><button class="btn secondary" type="button" data-soon="Requesting changes">Request changes</button><button class="btn primary" type="button" data-soon="Approving">Approve all 6</button></div>
+  <div class="grid" id="perfkpis"></div>
+  <div class="grid" style="margin-top:24px">
+    <section class="card s8" aria-labelledby="chn-h">
+      <div class="ch"><h2 id="chn-h">By channel</h2><p id="perfrange"></p></div>
+      <table><thead><tr><th>Channel</th><th class="num">Spend</th><th class="num">Leads</th><th class="num">Cost per lead</th><th class="num hide-sm">Revenue</th><th class="hide-sm">Share of leads</th></tr></thead><tbody id="channels"></tbody></table>
+    </section>
+    <section class="card s4" aria-labelledby="pi-h">
+      <div class="ch"><h2 id="pi-h">What this means</h2></div>
+      <div class="ins">
+        <article><h3>Search is the cheapest source of leads</h3><p>Moving $300 a month from Display to Search should add about 14 leads next quarter at today's costs.</p><a class="act" href="#approvals/budget">Review the budget change</a></article>
+        <article><h3>Revenue here is attributed, not counted</h3><p>Connecting Shopify would replace the estimate with real orders.</p><a class="act" href="#home" data-action="shopify">Invite XPM to Shopify</a></article>
       </div>
     </section>
   </div>
+</main>
+
+<!-- ───────── PROJECTS ───────── -->
+<main class="view" id="projects" hidden>
+  <div class="head">
+    <div><p class="eyebrow">Projects</p><h1>What XPM is working on</h1><p class="lede">Every project has an owner, a due date and a next step. Select one to see its milestones.</p></div>
+    <div class="seg" role="group" aria-label="Filter projects" id="pfilter"></div>
+  </div>
+  <div class="grid">
+    <section class="card s7"><table><thead><tr><th>Project</th><th>Status</th><th class="hide-sm">Owner</th><th>Due</th></tr></thead><tbody id="projlist"></tbody></table></section>
+    <section class="panel s5" id="projdetail" aria-live="polite"></section>
+  </div>
+</main>
+
+<!-- ───────── APPROVALS ───────── -->
+<main class="view" id="approvals" hidden>
+  <div class="head">
+    <div><p class="eyebrow">Approvals</p><h1 id="apph1"></h1><p class="lede">Nothing goes live without your approval. Each item shows what changed and what happens next.</p></div>
+  </div>
+  <nav class="tabs" aria-label="Approval status" id="apptabs"></nav>
+  <div class="grid">
+    <div class="queue s4" id="queue"></div>
+    <section class="review s8" id="review" aria-live="polite"></section>
+  </div>
+</main>
+
+<!-- ───────── REPORTS ───────── -->
+<main class="view" id="reports" hidden>
+  <div class="head">
+    <div><p class="eyebrow">Reports</p><h1>Monthly and quarterly reports</h1><p class="lede">Each report downloads as a spreadsheet file with spend, leads and revenue by channel.</p></div>
+  </div>
+  <section class="card"><ul class="rlist" id="rlist"></ul></section>
 </main>
 
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
-<footer><span>Concept mockup · sample client and data · built to XPM Design System v1.0.0</span><span>Space Grotesk and Orbitron · black and white foundation · Signal Blue for action and status</span></footer>
+<footer><span>Concept · sample client and data · built to XPM Design System v1.0.0 · <button class="btn link" type="button" id="reset" style="font-size:13px">Reset demo</button></span><span>Space Grotesk and Orbitron · black and white foundation · Signal Blue for action and status</span></footer>
 
 <script>
-  // Two views, switched by the address hash so each can be linked directly.
-  function route() {
-    const v = location.hash === '#approvals' || new URLSearchParams(location.search).get('view') === 'approvals' ? 'approvals' : 'home';
-    document.querySelectorAll('.view').forEach((m) => (m.hidden = m.id !== v));
-    document.querySelectorAll('nav.main a[data-view]').forEach((a) => a.setAttribute('aria-current', a.dataset.view === v ? 'page' : 'false'));
-    window.scrollTo(0, 0);
+/* ───────── Data. One source, so every screen agrees. ───────── */
+const CHANNELS = {
+  q3:  [ ['Search', 2204, 76, 168000], ['Paid social', 2668, 58, 121000], ['Display', 1144, 22, 34000], ['Email', 900, 18, 61000], ['Organic', 0, 10, 28000] ],
+  d30: [ ['Search', 870, 30, 62000], ['Paid social', 966, 21, 44000], ['Display', 364, 7, 11000], ['Email', 300, 6, 24000], ['Organic', 0, 4, 11000] ],
+};
+const RANGE_LABEL = { q3: 'Jul 1 to Sep 17', d30: 'Aug 19 to Sep 17' };
+const MONTHS = [
+  { id: 'q3', name: 'Q3 2026 summary', sub: 'Quarter to date, updated Sep 17', leads: 184, spend: 6916, revenue: 412000, rows: CHANNELS.q3 },
+  { id: 'aug', name: 'August 2026', sub: 'Sent Sep 2', leads: 64, spend: 2480, revenue: 141000 },
+  { id: 'jul', name: 'July 2026', sub: 'Sent Aug 1', leads: 72, spend: 2520, revenue: 158000 },
+  { id: 'jun', name: 'June 2026', sub: 'Sent Jul 1', leads: 70, spend: 3080, revenue: 122000 },
+];
+const APPROVALS = {
+  adset: { title: 'Fall campaign ad set', line: 'Fall campaign ad set, 6 creatives', sub: 'Revised after your notes on Sep 15 · Paid social', meta: '6 creatives · Paid social · Due tomorrow', chip: ['info', 'Revision 2'], due: 'Due tomorrow', soon: true, eyebrow: 'Paid social · Fall campaign', kind: 'creative', owner: 'Ana',
+    kv: [['Channel', 'Instagram and Facebook'], ['Budget', '$2,400 over 3 weeks'], ['Launch', 'Sep 23'], ['Owner', 'Ana, XPM']],
+    changed: ['Headlines shortened on all 6 creatives', 'Price removed from creative 3', 'Free-shipping line added to every caption'],
+    hist: [['Sep 17', 'Revision 2 sent by Ana'], ['Sep 15', 'You requested changes: "shorter headlines, no prices"'], ['Sep 12', 'Revision 1 sent']],
+    next: 'If approved, the campaign goes live on Sep 23.', approveLabel: 'Approve all 6' },
+  budget: { title: 'Move $300 a month to Search', line: 'Move $300 a month from Display to Search', sub: 'Search leads cost $29, Display leads cost $52 · Paid media', meta: 'From Display · Paid media · Due Sep 20', chip: ['warn', 'Budget change'], due: 'Due Sep 20', soon: true, eyebrow: 'Paid media · Q4 budget', kind: 'budget', owner: 'Leo',
+    kv: [['Amount', '$300 a month'], ['From', 'Display'], ['To', 'Search'], ['Owner', 'Leo, XPM']],
+    changed: ['Total budget stays the same', 'Display keeps retargeting only', 'Reviewed again after 30 days'],
+    hist: [['Sep 16', 'Proposed by Leo after the Q3 review']],
+    next: 'If approved, the change starts on Oct 1.', approveLabel: 'Approve change' },
+  email: { title: 'October email calendar', line: 'October email calendar, 5 sends', sub: 'First draft · Email', meta: '5 sends · Email · Due Sep 22', chip: ['neu', 'Draft'], due: 'Due Sep 22', soon: false, eyebrow: 'Email · October', kind: 'email', owner: 'Sam',
+    kv: [['Sends', '5 to 18,400 subscribers'], ['First send', 'Oct 2'], ['Owner', 'Sam, XPM']],
+    changed: ['First draft, nothing changed yet'],
+    hist: [['Sep 16', 'Draft sent by Sam']],
+    sends: [['Oct 2', 'Fall layers are here', 'Launch of the fall collection'], ['Oct 9', 'Built for the first cold morning', 'Best sellers from the ad set'], ['Oct 16', 'How to layer for a weekend trip', 'Guide, no discount'], ['Oct 23', 'Free shipping ends Sunday', 'Deadline reminder'], ['Oct 30', 'Last call on fall layers', 'Final reminder']],
+    next: 'If approved, the first email sends on Oct 2.', approveLabel: 'Approve calendar' },
+  landing: { title: 'Fall landing page copy', line: 'Fall landing page copy', sub: 'Your note: "lead with free shipping"', meta: 'Web · Sent back Sep 14', chip: ['warn', 'Changes requested'], due: 'Revision due Sep 19', eyebrow: 'Web · Fall campaign', kind: 'plain', owner: 'Sam',
+    kv: [['Page', 'northline.example/fall'], ['Owner', 'Sam, XPM']], changed: ['Waiting for revision 2'], hist: [['Sep 14', 'You requested changes: "lead with free shipping"'], ['Sep 11', 'Revision 1 sent']], next: 'Sam is revising it.' },
+};
+const EARLIER_APPROVED = ['Summer sale wrap-up email', 'August report', 'Category page template', 'Search ad copy refresh', 'Retargeting audience list'];
+const PROJECTS = {
+  launch: { name: 'Fall campaign launch', sub: 'Paid social and search', owner: 'Ana, XPM', due: 'Sep 23',
+    miles: [['Brief agreed', 'Aug 28', 1], ['Creatives, revision 1', 'Sep 12', 1], ['Creatives, revision 2', 'Sep 17', 1], ['Your approval', 'Sep 19', 0], ['Launch', 'Sep 23', 0]] },
+  scoring: { name: 'CRM lead scoring', sub: 'Routes hot leads to your sales inbox', owner: 'Leo, XPM', due: 'Sep 30', status: ['info', 'In progress'], next: 'Testing on last month’s leads',
+    miles: [['Export past leads', 'Sep 3', 1], ['Model drafted on 1,140 past leads', 'Sep 9', 1], ['Test on last month’s leads', 'Sep 24', 0], ['Connect to your sales inbox', 'Sep 30', 0]] },
+  dash: { name: 'Q4 reporting dashboard', sub: 'One view of spend, leads and revenue', owner: 'Leo, XPM', due: 'Oct 3', status: ['neu', 'Pending review'], next: 'Walkthrough on the Sep 26 call',
+    miles: [['Metrics agreed', 'Sep 5', 1], ['First build', 'Sep 16', 1], ['Walkthrough with you', 'Sep 26', 0], ['Live for Q4', 'Oct 3', 0]] },
+  pages: { name: 'Category page rewrite', sub: '12 pages, new template', owner: 'Sam, XPM', due: 'Done Sep 2', status: ['ok', 'Live'], next: 'Roll out to 8 more pages',
+    miles: [['New template', 'Aug 14', 1], ['12 pages live', 'Sep 2', 1], ['Organic sessions 7% above goal', 'Sep 17', 1], ['Proposal: 8 more pages', 'Sep 26', 0]] },
+  summer: { name: 'Summer promotion', sub: 'Paid social, email and site banner', owner: 'Ana, XPM', due: 'Ended Aug 31', status: ['neu', 'Complete'], next: 'Results in the August report',
+    miles: [['Launched', 'Jul 8', 1], ['Mid-campaign refresh', 'Aug 1', 1], ['Ended', 'Aug 31', 1]] },
+};
+
+/* ───────── State, kept in this browser only. ───────── */
+const DEFAULT = { status: { adset: 'pending', budget: 'pending', email: 'pending', landing: 'changes' }, approvedNow: [], shopify: false, range: 'q3', pfilter: 'All', sel: { approvals: 'adset', projects: 'launch' } };
+let S;
+try { S = JSON.parse(localStorage.getItem('xpm-concept')) || structuredClone(DEFAULT); } catch (e) { S = structuredClone(DEFAULT); }
+const save = () => { try { localStorage.setItem('xpm-concept', JSON.stringify(S)); } catch (e) {} };
+const $ = (id) => document.getElementById(id);
+const money = (n) => n >= 10000 ? '$' + Math.round(n / 1000) + 'k' : '$' + n.toLocaleString('en-US');
+const chip = ([k, t]) => `<span class="chip ${k}">${t}</span>`;
+const pendingIds = () => Object.keys(APPROVALS).filter((k) => S.status[k] === 'pending');
+
+let timer;
+function toast(msg) { const t = $('toast'); t.textContent = msg; t.classList.add('on'); clearTimeout(timer); timer = setTimeout(() => t.classList.remove('on'), 2800); }
+
+function launchStatus() {
+  const st = S.status.adset;
+  if (st === 'approved') return { chip: ['info', 'Scheduled'], next: 'Goes live Sep 23' };
+  if (st === 'changes') return { chip: ['neu', 'Being revised'], next: 'Ana is revising the ad set' };
+  return { chip: ['warn', 'Waiting on you'], next: 'Your approval of the ad set' };
+}
+const projStatus = (id) => (id === 'launch' ? launchStatus().chip : PROJECTS[id].status);
+const projNext = (id) => (id === 'launch' ? launchStatus().next : PROJECTS[id].next);
+
+/* ───────── Home ───────── */
+function renderHome() {
+  const p = pendingIds();
+  $('lede').innerHTML = p.length
+    ? `<b>3 of 4 goals are on track.</b> Lead volume is behind pace, and ${p.length} item${p.length > 1 ? 's' : ''} need${p.length > 1 ? '' : 's'} your decision before the fall launch on Sep 23.`
+    : '<b>3 of 4 goals are on track.</b> Nothing is waiting on you. Lead volume is behind pace, and the fall launch on Sep 23 is set to close part of that gap.';
+  $('decide').innerHTML = p.length
+    ? `<div class="top"><div><p class="eyebrow" style="margin:0 0 4px">Needs your decision</p><h2 id="dec-h">${p.length} approval${p.length > 1 ? 's are' : ' is'} holding up the fall launch</h2></div><a class="btn primary" href="#approvals/${p[0]}">Review approvals</a></div>
+       <ul class="dlist">${p.map((k) => { const a = APPROVALS[k]; return `<li><div><b><a href="#approvals/${k}" style="color:inherit;text-decoration:none">${a.line}</a></b><span>${a.sub}</span></div>${chip(a.chip)}<span class="due ${a.soon ? 'soon' : ''}">${a.due}</span></li>`; }).join('')}</ul>`
+    : `<div class="empty"><p class="eyebrow" style="margin:0">Needs your decision</p><b id="dec-h">Nothing is waiting on you</b><span>New approvals will appear here with a due date and what changed.</span><a class="btn link" href="#approvals">See past approvals</a></div>`;
+  $('homeprojects').innerHTML = ['launch', 'scoring', 'dash', 'pages'].map((id) => { const pr = PROJECTS[id]; return `<tr class="rowbtn" data-go="#projects/${id}"><td class="name"><b>${pr.name}</b><span>${pr.sub}</span></td><td>${chip(projStatus(id))}</td><td class="hide-sm">${pr.owner}</td><td>${pr.due}</td><td class="hide-sm">${projNext(id)}</td></tr>`; }).join('');
+  const prog = [...S.approvedNow.map((k) => ['Today', `You approved: ${APPROVALS[k].title}`, APPROVALS[k].next.replace('If approved, ', '')]), ['Sep 17', 'Ad set revised', 'All 6 creatives updated from your notes'], ['Sep 15', 'Search campaigns restructured', 'Cost per lead down from $41 to $29'], ['Sep 9', 'Lead scoring model drafted', 'Built on 1,140 past leads'], ['Sep 2', 'Category pages live', '12 pages on the new template']].slice(0, 5);
+  $('progress').innerHTML = prog.map(([d, t, s]) => `<li><time>${d}</time><div><b>${t}</b><br>${s}</div></li>`).join('');
+  const adDone = S.status.adset === 'approved' && S.status.budget === 'approved';
+  $('steps').innerHTML = [
+    ['01', 'You', 'Approve the fall ad set and budget change', adDone ? 'Done. Thank you.' : 'Both are needed for the Sep 23 launch.', adDone ? '' : `<a class="btn link" href="#approvals/${S.status.adset === 'pending' ? 'adset' : 'budget'}">Review now</a>`],
+    ['02', 'You', 'Give XPM access to Shopify', S.shopify ? 'Invite sent. XPM will confirm the connection.' : 'So revenue in this portal comes from orders, not estimates.', S.shopify ? '' : '<button class="btn link" type="button" data-action="shopify">Send invite</button>'],
+    ['03', 'XPM', 'Bring a Q4 plan to the Sep 26 call', 'Goals, budget and the pages to rewrite next.', '<a class="btn link" href="#projects/pages">See the page plan</a>'],
+  ].map(([n, o, b, s, a]) => `<li><span class="n">${n}</span><span class="owner">${o}</span><b>${b}</b><span>${s}</span>${a}</li>`).join('');
+}
+
+/* ───────── Performance ───────── */
+function renderPerformance() {
+  const rows = CHANNELS[S.range];
+  const spend = rows.reduce((a, r) => a + r[1], 0), leads = rows.reduce((a, r) => a + r[2], 0), rev = rows.reduce((a, r) => a + r[3], 0);
+  document.querySelectorAll('[data-range]').forEach((b) => b.setAttribute('aria-pressed', b.dataset.range === S.range));
+  $('perfrange').textContent = RANGE_LABEL[S.range];
+  $('perfkpis').innerHTML = [['Spend', money(spend), 'Across 4 paid channels'], ['Qualified leads', leads, S.range === 'q3' ? 'Goal 220 this quarter' : '17 a week needed for goal'], ['Cost per lead', '$' + Math.round(spend / leads), 'Target $45 or less'], ['Revenue from marketing', money(rev), 'Attributed until Shopify is connected']]
+    .map(([l, v, t]) => `<section class="card metric s3"><div class="l">${l}</div><div class="v">${v}</div><div class="t">${t}</div></section>`).join('');
+  const max = Math.max(...rows.map((r) => r[2]));
+  const cpls = rows.filter((r) => r[1]).map((r) => r[1] / r[2]);
+  $('channels').innerHTML = rows.map(([n, s, l, r]) => {
+    const cpl = s ? Math.round(s / l) : null;
+    const tag = cpl === Math.round(Math.min(...cpls)) ? ' ' + chip(['ok', 'Cheapest']) : cpl === Math.round(Math.max(...cpls)) ? ' ' + chip(['warn', 'Most expensive']) : '';
+    return `<tr><td class="name"><b>${n}</b>${tag}</td><td class="num">${s ? money(s) : '$0'}</td><td class="num">${l}</td><td class="num">${cpl ? '$' + cpl : 'No spend'}</td><td class="num hide-sm">${money(r)}</td><td class="hide-sm"><div class="share"><i style="width:${Math.round((l / max) * 100)}%"></i></div></td></tr>`;
+  }).join('');
+}
+
+/* ───────── Projects ───────── */
+const FILTERS = ['All', 'Waiting on you', 'In progress', 'Pending review', 'Live'];
+function renderProjects() {
+  $('pfilter').innerHTML = FILTERS.map((f) => `<button type="button" data-pf="${f}" aria-pressed="${f === S.pfilter}">${f}</button>`).join('');
+  const ids = Object.keys(PROJECTS).filter((id) => S.pfilter === 'All' || projStatus(id)[1] === S.pfilter);
+  $('projlist').innerHTML = ids.length ? ids.map((id) => { const p = PROJECTS[id]; return `<tr class="rowbtn" tabindex="0" data-proj="${id}" aria-selected="${id === S.sel.projects}"><td class="name"><b>${p.name}</b><span>${p.sub}</span></td><td>${chip(projStatus(id))}</td><td class="hide-sm">${p.owner}</td><td>${p.due}</td></tr>`; }).join('')
+    : `<tr><td colspan="4"><div class="empty"><b>No projects with this status</b><span>Choose All to see every project.</span></div></td></tr>`;
+  const id = S.sel.projects, p = PROJECTS[id];
+  let nowSet = false;
+  $('projdetail').innerHTML = `<div><p class="eyebrow" style="margin:0">${p.sub}</p><h2>${p.name}</h2></div>
+    <div>${chip(projStatus(id))}</div>
+    <dl class="kv"><dt>Owner</dt><dd>${p.owner}</dd><dt>Due</dt><dd>${p.due}</dd><dt>Next step</dt><dd>${projNext(id)}</dd></dl>
+    <div><p class="sub3">Milestones</p><ol class="miles">${p.miles.map(([m, d, done]) => { const isDone = done || (id === 'launch' && m === 'Your approval' && S.status.adset === 'approved'); let cls = isDone ? 'done' : ''; if (!isDone && !nowSet) { cls = 'now'; nowSet = true; } return `<li class="${cls}"><span class="dot" aria-hidden="true"></span><span>${m}${cls === 'now' ? ' <b style="font-weight:600">(next)</b>' : ''}</span><time>${d}</time></li>`; }).join('')}</ol></div>
+    ${id === 'launch' && S.status.adset === 'pending' ? '<a class="btn primary" href="#approvals/adset" style="justify-self:start">Review the ad set</a>' : ''}`;
+}
+
+/* ───────── Approvals ───────── */
+let tab = 'pending';
+function renderApprovals() {
+  const p = pendingIds(), ch = Object.keys(APPROVALS).filter((k) => S.status[k] === 'changes'), ap = Object.keys(APPROVALS).filter((k) => S.status[k] === 'approved');
+  $('apph1').textContent = p.length ? `${p.length} item${p.length > 1 ? 's need' : ' needs'} your decision` : 'You are all caught up';
+  const approvedCount = 14 + ap.length;
+  $('apptabs').innerHTML = [['pending', `Pending (${p.length})`], ['changes', `Changes requested (${ch.length})`], ['approved', `Approved (${approvedCount})`]]
+    .map(([k, t]) => `<a href="#approvals" data-tab="${k}" aria-selected="${k === tab}">${t}</a>`).join('');
+  const list = tab === 'pending' ? p : tab === 'changes' ? ch : ap;
+  if (!list.includes(S.sel.approvals)) S.sel.approvals = list[0] || null;
+  let q = list.map((k) => { const a = APPROVALS[k]; const c = S.status[k] === 'approved' ? ['ok', 'Approved'] : S.status[k] === 'changes' ? ['warn', 'Changes requested'] : a.chip; return `<a class="qitem" href="#approvals/${k}" aria-current="${k === S.sel.approvals}"><div class="row"><b>${a.title}</b>${chip(c)}</div><span>${S.status[k] === 'approved' ? 'Approved today' : a.meta}</span></a>`; }).join('');
+  if (tab === 'approved') q += EARLIER_APPROVED.map((t) => `<div class="qitem"><div class="row"><b>${t}</b>${chip(['ok', 'Approved'])}</div><span>Earlier this quarter</span></div>`).join('') + `<p class="help" style="margin:4px 4px 0">And 9 more earlier this quarter.</p>`;
+  $('queue').innerHTML = q || `<div class="card empty"><b>Nothing here</b><span>${tab === 'pending' ? 'New approvals will appear here.' : 'Items you send back for changes will appear here.'}</span></div>`;
+  const k = S.sel.approvals;
+  if (!k) { $('review').innerHTML = `<div class="empty"><b>${tab === 'pending' ? 'Nothing is waiting on you' : 'Select an item'}</b><span>${tab === 'pending' ? 'XPM will flag the next item for review here.' : 'Past decisions are kept with their full history.'}</span></div>`; return; }
+  const a = APPROVALS[k], st = S.status[k];
+  const asset = a.kind === 'creative'
+    ? `<p class="sub3" style="margin:0">Creative 1 of 6</p><div class="creative"><div class="img"><b>Built for the first cold morning.</b><span>Fall layers, in stock now</span></div><div class="copy"><b>Northline Outfitters</b><span>Layer up before the weather does. Free shipping over $75.</span></div></div><div class="thumbs" aria-label="All creatives"><div class="sel">1</div><div>2</div><div>3</div><div>4</div><div>5</div><div>6</div></div>`
+    : a.kind === 'budget'
+    ? `<p class="sub3" style="margin:0">Monthly budget, before and after</p><div class="bviz">${[['Search', 850, 1150], ['Display', 440, 140]].map(([n, b, af]) => `<div class="r"><span>${n}</span><div class="t"><i style="width:${(b / 1150) * 100}%"></i></div><span>${money(b)}</span></div><div class="r"><span style="color:var(--muted)">After</span><div class="t"><i class="b" style="width:${(af / 1150) * 100}%"></i></div><b>${money(af)}</b></div>`).join('')}</div><p class="help">Search leads cost $29 and Display leads cost $52 this quarter, so the same money buys more leads on Search.</p>`
+    : a.kind === 'email'
+    ? `<p class="sub3" style="margin:0">5 sends in October</p><ul class="sends">${a.sends.map(([d, t, s]) => `<li><time>${d}</time><div><b>${t}</b><span>${s}</span></div></li>`).join('')}</ul>`
+    : `<p class="sub3" style="margin:0">Status</p><p style="margin:0">Sent back for changes on Sep 14. ${a.next}</p>`;
+  const stChip = st === 'approved' ? ['ok', 'Approved'] : st === 'changes' ? ['warn', 'Changes requested'] : a.chip;
+  $('review').innerHTML = `<div class="rh"><div><p class="eyebrow" style="margin:0">${a.eyebrow}</p><h2 id="rv-h">${a.title}</h2></div>${chip(stChip)}</div>
+    <div class="rbody"><div class="asset">${asset}</div>
+      <div class="meta">
+        <dl class="kv">${a.kv.map(([x, y]) => `<dt>${x}</dt><dd>${y}</dd>`).join('')}</dl>
+        <div><p class="sub3">${a.kind === 'email' ? 'Notes' : a.kind === 'budget' ? 'What stays the same' : 'What changed since your notes'}</p><ul class="changed">${a.changed.map((c) => `<li>${c}</li>`).join('')}</ul></div>
+        <div><p class="sub3">History</p><ul class="hist">${(st === 'approved' ? [['Today', 'You approved it']] : []).concat(a.hist).map(([d, t]) => `<li><time>${d}</time><span>${t}</span></li>`).join('')}</ul></div>
+        ${st === 'pending' ? `<div><label for="note">Note to XPM</label><textarea id="note" placeholder="Add a note for ${a.owner}" aria-describedby="notehelp"></textarea><p class="help" id="notehelp">Required only if you request changes.</p></div>` : ''}
+      </div></div>
+    ${st === 'pending' ? `<div class="rfoot"><span class="help" style="margin:0">${a.next}</span><div class="acts"><button class="btn secondary" type="button" data-decide="changes">Request changes</button><button class="btn primary" type="button" data-decide="approve">${a.approveLabel}</button></div></div>` : ''}`;
+}
+
+function decide(kind) {
+  const k = S.sel.approvals, a = APPROVALS[k], note = $('note');
+  if (kind === 'changes' && !note.value.trim()) {
+    note.setAttribute('aria-invalid', 'true');
+    $('notehelp').className = 'err'; $('notehelp').textContent = `Add a note so ${a.owner} knows what to change.`;
+    note.focus(); return;
   }
-  if (new URLSearchParams(location.search).has('shot')) document.body.classList.add('shot');
-  window.addEventListener('hashchange', route);
-  // This concept covers two screens. Every other control explains that instead of doing nothing.
-  let timer;
-  document.addEventListener('click', (e) => {
-    const el = e.target.closest('[data-soon]');
-    if (!el) return;
-    e.preventDefault();
-    const t = document.getElementById('toast');
-    t.textContent = `${el.dataset.soon} is not part of this concept. It covers Home and Approvals.`;
-    t.classList.add('on');
-    clearTimeout(timer);
-    timer = setTimeout(() => t.classList.remove('on'), 2600);
-  });
-  route();
+  S.status[k] = kind === 'approve' ? 'approved' : 'changes';
+  if (kind === 'approve') S.approvedNow.unshift(k);
+  else APPROVALS[k].hist = [['Today', `You requested changes: "${note.value.trim()}"`]].concat(APPROVALS[k].hist);
+  save();
+  toast(kind === 'approve' ? `Approved. ${a.owner} has been notified. ${a.next.replace('If approved, ', '')}` : `Sent back to ${a.owner} with your note.`);
+  S.sel.approvals = pendingIds()[0] || k;
+  if (!pendingIds().length) tab = kind === 'approve' ? 'approved' : 'changes';
+  renderAll();
+}
+
+/* ───────── Reports ───────── */
+function renderReports() {
+  $('rlist').innerHTML = MONTHS.map((m) => `<li><div><b>${m.name}</b><span>${m.sub}</span></div><div><span>Leads</span><div class="n">${m.leads}</div></div><div><span>Spend</span><div class="n">${money(m.spend)}</div></div><div><span>Revenue</span><div class="n">${money(m.revenue)}</div></div><button class="btn secondary" type="button" data-download="${m.id}">Download CSV</button></li>`).join('');
+}
+function download(id) {
+  const m = MONTHS.find((x) => x.id === id);
+  const lines = [['Northline Outfitters', m.name], [], ['Channel', 'Spend', 'Qualified leads', 'Cost per lead', 'Revenue']];
+  if (m.rows) m.rows.forEach(([n, s, l, r]) => lines.push([n, s, l, s ? Math.round(s / l) : '', r]));
+  lines.push(['Total', m.spend, m.leads, Math.round(m.spend / m.leads), m.revenue], [], ['Sample data from the XPM client portal concept']);
+  const blob = new Blob([lines.map((r) => r.join(',')).join('\n')], { type: 'text/csv' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob); a.download = `northline-${m.name.toLowerCase().replace(/\s+/g, '-')}.csv`; a.click();
+  setTimeout(() => URL.revokeObjectURL(a.href), 1000);
+  toast(`${m.name} downloaded.`);
+}
+
+/* ───────── Routing and events ───────── */
+function renderAll() {
+  const n = pendingIds().length;
+  $('navcount').textContent = n; $('navcount').hidden = !n; $('navcount').setAttribute('aria-label', `${n} pending`);
+  renderHome(); renderPerformance(); renderProjects(); renderApprovals(); renderReports();
+}
+function route() {
+  const q = new URLSearchParams(location.search).get('view');
+  const [v0, sub] = (location.hash.slice(1) || q || 'home').split('/');
+  const v = ['home', 'performance', 'projects', 'approvals', 'reports'].includes(v0) ? v0 : 'home';
+  if (v === 'approvals' && sub && APPROVALS[sub]) { S.sel.approvals = sub; tab = S.status[sub] === 'pending' ? 'pending' : S.status[sub]; }
+  if (v === 'projects' && sub && PROJECTS[sub]) { S.sel.projects = sub; S.pfilter = 'All'; }
+  document.querySelectorAll('.view').forEach((m) => (m.hidden = m.id !== v));
+  document.querySelectorAll('nav.main a[data-view]').forEach((a) => a.setAttribute('aria-current', a.dataset.view === v ? 'page' : 'false'));
+  renderAll(); window.scrollTo(0, 0);
+}
+document.addEventListener('click', (e) => {
+  const t = e.target.closest('[data-range],[data-pf],[data-proj],[data-tab],[data-decide],[data-download],[data-action],[data-go],#reset');
+  if (!t) return;
+  if (t.dataset.range) { S.range = t.dataset.range; save(); renderPerformance(); }
+  else if (t.dataset.pf) { S.pfilter = t.dataset.pf; renderProjects(); }
+  else if (t.dataset.proj) { S.sel.projects = t.dataset.proj; renderProjects(); }
+  else if (t.dataset.tab) { e.preventDefault(); tab = t.dataset.tab; S.sel.approvals = null; renderApprovals(); }
+  else if (t.dataset.decide) decide(t.dataset.decide === 'approve' ? 'approve' : 'changes');
+  else if (t.dataset.download) download(t.dataset.download);
+  else if (t.dataset.action === 'shopify') { e.preventDefault(); S.shopify = true; save(); renderHome(); toast('Invite sent. XPM will confirm the Shopify connection.'); }
+  else if (t.dataset.go) location.hash = t.dataset.go;
+  else if (t.id === 'reset') { try { localStorage.removeItem('xpm-concept'); } catch (err) {} location.hash = '#home'; location.reload(); }
+});
+document.addEventListener('keydown', (e) => { if (e.key === 'Enter' && e.target.dataset && e.target.dataset.proj) { S.sel.projects = e.target.dataset.proj; renderProjects(); } });
+document.addEventListener('input', (e) => { if (e.target.id === 'note' && e.target.getAttribute('aria-invalid')) { e.target.removeAttribute('aria-invalid'); $('notehelp').className = 'help'; $('notehelp').textContent = 'Required only if you request changes.'; } });
+if (new URLSearchParams(location.search).has('shot')) document.body.classList.add('shot');
+window.addEventListener('hashchange', route);
+route();
 </script>
 </body>
 </html>
