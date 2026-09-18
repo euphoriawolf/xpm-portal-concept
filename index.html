@@ -168,6 +168,10 @@ textarea:focus{border-color:var(--blue-focus);outline:none;box-shadow:0 0 0 3px 
 
 footer{max-width:1440px;margin:0 auto;padding:0 64px 40px;font-size:13px;color:var(--muted);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 .view[hidden]{display:none}
+/* Placeholder controls say so instead of doing nothing. */
+.toast{position:fixed;left:50%;bottom:32px;transform:translate(-50%,12px);background:var(--black);color:var(--white);border-radius:8px;padding:12px 18px;font-size:14px;max-width:min(92vw,560px);opacity:0;pointer-events:none;transition:opacity .2s,transform .2s;z-index:10}
+.toast.on{opacity:1;transform:translate(-50%,0)}
+@media (prefers-reduced-motion:reduce){.toast{transition:none}}
 
 @media (max-width:1100px){
   .bar{padding:0 32px;gap:20px}.lockup span{display:none}
@@ -198,10 +202,10 @@ footer{max-width:1440px;margin:0 auto;padding:0 64px 40px;font-size:13px;color:v
   <a class="lockup" href="#home" aria-label="XPM Client Portal home"><img src="assets/xpm-white.svg" alt="XPM"><span>Client Portal</span></a>
   <nav class="main" aria-label="Portal">
     <a href="#home" data-view="home">Home</a>
-    <a href="#home" data-soon>Performance</a>
-    <a href="#home" data-soon>Projects</a>
+    <a href="#home" data-soon="Performance">Performance</a>
+    <a href="#home" data-soon="Projects">Projects</a>
     <a href="#approvals" data-view="approvals">Approvals <span class="count" aria-label="3 pending">3</span></a>
-    <a href="#home" data-soon>Reports</a>
+    <a href="#home" data-soon="Reports">Reports</a>
   </nav>
   <div class="who"><span><b>Maya Chen</b> · Northline Outfitters</span><div class="avatar" aria-hidden="true">MC</div></div>
 </header>
@@ -214,7 +218,7 @@ footer{max-width:1440px;margin:0 auto;padding:0 64px 40px;font-size:13px;color:v
       <h1>Northline at a glance</h1>
       <p class="lede"><b>3 of 4 goals are on track.</b> Lead volume is behind pace, and 3 items need your decision before the fall launch on Sep 23.</p>
     </div>
-    <a class="btn secondary" href="#home">Download September report</a>
+    <a class="btn secondary" href="#home" data-soon="The September report">Download September report</a>
   </div>
 
   <div class="grid">
@@ -287,13 +291,13 @@ footer{max-width:1440px;margin:0 auto;padding:0 64px 40px;font-size:13px;color:v
       <div class="ins">
         <article><h3>Search is carrying lead volume</h3><p>Search leads cost $29, Display leads cost $52. Moving budget to Search is the fastest way back to pace.</p><a class="act" href="#approvals">Review the budget change</a></article>
         <article><h3>Leads slowed after week 32</h3><p>The summer promotion ended and nothing replaced it. The fall launch is scheduled to fill that gap.</p><a class="act" href="#approvals">Approve the fall ad set</a></article>
-        <article><h3>The category page rewrite worked</h3><p>Organic sessions beat goal by 7% after the new page template went live.</p><a class="act" href="#home">See which pages are next</a></article>
+        <article><h3>The category page rewrite worked</h3><p>Organic sessions beat goal by 7% after the new page template went live.</p><a class="act" href="#home" data-soon="The page roadmap">See which pages are next</a></article>
       </div>
     </section>
 
     <!-- 4. Work in flight, with an owner and a next step on every row -->
     <section class="card s8" aria-labelledby="pr-h">
-      <div class="ch"><h2 id="pr-h">Current projects</h2><a class="btn link" href="#home">All projects</a></div>
+      <div class="ch"><h2 id="pr-h">Current projects</h2><a class="btn link" href="#home" data-soon="The Projects screen">All projects</a></div>
       <table>
         <thead><tr><th>Project</th><th>Status</th><th class="hide-sm">Owner</th><th>Due</th><th class="hide-sm">Next step</th></tr></thead>
         <tbody>
@@ -339,8 +343,8 @@ footer{max-width:1440px;margin:0 auto;padding:0 64px 40px;font-size:13px;color:v
 
   <nav class="tabs" aria-label="Approval status">
     <a href="#approvals" aria-selected="true">Pending (3)</a>
-    <a href="#approvals" aria-selected="false">Changes requested (1)</a>
-    <a href="#approvals" aria-selected="false">Approved (14)</a>
+    <a href="#approvals" aria-selected="false" data-soon="The Changes requested list">Changes requested (1)</a>
+    <a href="#approvals" aria-selected="false" data-soon="The Approved list">Approved (14)</a>
   </nav>
 
   <div class="grid">
@@ -349,11 +353,11 @@ footer{max-width:1440px;margin:0 auto;padding:0 64px 40px;font-size:13px;color:v
         <div class="row"><b>Fall campaign ad set</b><span class="chip info">Revision 2</span></div>
         <span>6 creatives · Paid social · Due tomorrow</span>
       </a>
-      <a class="qitem" href="#approvals">
+      <a class="qitem" href="#approvals" data-soon="The budget change review">
         <div class="row"><b>Move $3,000 to Search</b><span class="chip warn">Budget</span></div>
         <span>From Display · Paid media · Due Sep 20</span>
       </a>
-      <a class="qitem" href="#approvals">
+      <a class="qitem" href="#approvals" data-soon="The email calendar review">
         <div class="row"><b>October email calendar</b><span class="chip neu">Draft</span></div>
         <span>5 sends · Email · Due Sep 22</span>
       </a>
@@ -391,12 +395,13 @@ footer{max-width:1440px;margin:0 auto;padding:0 64px 40px;font-size:13px;color:v
       </div>
       <div class="rfoot">
         <span class="help" style="margin:0">If approved, the campaign goes live on Sep 23.</span>
-        <div class="acts"><button class="btn secondary" type="button">Request changes</button><button class="btn primary" type="button">Approve all 6</button></div>
+        <div class="acts"><button class="btn secondary" type="button" data-soon="Requesting changes">Request changes</button><button class="btn primary" type="button" data-soon="Approving">Approve all 6</button></div>
       </div>
     </section>
   </div>
 </main>
 
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
 <footer><span>Concept mockup · sample client and data · built to XPM Design System v1.0.0</span><span>Space Grotesk and Orbitron · black and white foundation · Signal Blue for action and status</span></footer>
 
 <script>
@@ -408,6 +413,18 @@ footer{max-width:1440px;margin:0 auto;padding:0 64px 40px;font-size:13px;color:v
     window.scrollTo(0, 0);
   }
   window.addEventListener('hashchange', route);
+  // This concept covers two screens. Every other control explains that instead of doing nothing.
+  let timer;
+  document.addEventListener('click', (e) => {
+    const el = e.target.closest('[data-soon]');
+    if (!el) return;
+    e.preventDefault();
+    const t = document.getElementById('toast');
+    t.textContent = `${el.dataset.soon} is not part of this concept. It covers Home and Approvals.`;
+    t.classList.add('on');
+    clearTimeout(timer);
+    timer = setTimeout(() => t.classList.remove('on'), 2600);
+  });
   route();
 </script>
 </body>
