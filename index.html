@@ -40,16 +40,16 @@ nav.main a[aria-current="page"]{color:var(--white);border-bottom-color:var(--blu
 .avatar{width:36px;height:36px;border-radius:50%;background:var(--n800);color:var(--white);display:grid;place-items:center;font-weight:600;font-size:13px}
 
 /* Page */
-main{max-width:1440px;margin:0 auto;padding:40px 64px 64px}
+main{max-width:1440px;margin:0 auto;padding:48px 64px 80px}
 .eyebrow{font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:0 0 8px}
 h1{font-size:40px;font-weight:600;line-height:1.15;margin:0;letter-spacing:-.01em}
 .lede{font-size:18px;color:var(--muted);margin:10px 0 0;max-width:62ch}
 .lede b{color:var(--text);font-weight:600}
-.head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;margin-bottom:32px;flex-wrap:wrap}
-.grid{display:grid;grid-template-columns:repeat(12,1fr);gap:24px}
-.card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:24px}
+.head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;margin-bottom:40px;flex-wrap:wrap}
+.grid{display:grid;grid-template-columns:repeat(12,1fr);gap:32px}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:28px}
 .card h2{font-size:20px;font-weight:600;margin:0}
-.card .ch{display:flex;justify-content:space-between;align-items:baseline;gap:16px;margin-bottom:16px}
+.card .ch{display:flex;justify-content:space-between;align-items:baseline;gap:16px;margin-bottom:20px}
 .card .ch p{margin:0;font-size:14px;color:var(--muted)}
 .s12{grid-column:span 12}.s8{grid-column:span 8}.s7{grid-column:span 7}.s5{grid-column:span 5}.s4{grid-column:span 4}.s3{grid-column:span 3}.s6{grid-column:span 6}
 
@@ -68,10 +68,10 @@ h1{font-size:40px;font-weight:600;line-height:1.15;margin:0;letter-spacing:-.01e
 
 /* Decision card */
 .decide{border:1px solid var(--black);padding:0;overflow:hidden}
-.decide .top{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:20px 24px;border-bottom:1px solid var(--border)}
+.decide .top{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:24px 28px;border-bottom:1px solid var(--border)}
 .decide .top h2{font-size:20px}
 .dlist{list-style:none;margin:0;padding:0}
-.dlist li{display:grid;grid-template-columns:1fr auto auto;gap:24px;align-items:center;padding:16px 24px;border-bottom:1px solid var(--border)}
+.dlist li{display:grid;grid-template-columns:1fr auto auto;gap:24px;align-items:center;padding:18px 28px;border-bottom:1px solid var(--border)}
 .dlist li:last-child{border-bottom:0}
 .dlist b{display:block;font-weight:600}
 .dlist span{font-size:14px;color:var(--muted)}
@@ -95,7 +95,7 @@ h1{font-size:40px;font-weight:600;line-height:1.15;margin:0;letter-spacing:-.01e
 
 /* Insights */
 .ins{display:grid;gap:0}
-.ins article{padding:16px 0;border-top:1px solid var(--border);display:grid;gap:6px}
+.ins article{padding:20px 0;border-top:1px solid var(--border);display:grid;gap:6px}
 .ins article:first-child{border-top:0;padding-top:0}
 .ins h3{font-size:16px;font-weight:600;margin:0}
 .ins p{margin:0;font-size:14px;color:var(--muted)}
@@ -117,7 +117,11 @@ td.name span{color:var(--muted);font-size:13px}
 .tl b{font-weight:600}
 
 /* Next steps */
-.steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.steps{list-style:none;margin:0;padding:0;display:grid;gap:0}
+.steps li{padding:16px 0;border-top:1px solid var(--border)}
+.steps li:first-child{border-top:0;padding-top:0}
+.steps li{display:grid;gap:4px}
+.steps .sh{display:flex;gap:10px;align-items:center}
 .steps li{display:grid;gap:6px;align-content:start}
 .steps .n{font-size:12px;font-weight:600;letter-spacing:.08em;color:var(--muted)}
 .steps b{font-weight:600}
@@ -271,7 +275,7 @@ textarea[aria-invalid="true"]{border-color:var(--err)}
     <section class="card decide s12" aria-labelledby="dec-h" id="decide"></section>
 
     <section class="card metric s3" aria-label="Revenue from marketing">
-      <div class="l">Revenue from marketing <span class="chip ok">On track</span></div>
+      <div class="l">Revenue <span class="chip ok">On track</span></div>
       <div class="v">$412k</div><div class="t">Goal $450k this quarter</div>
       <div class="prog" role="progressbar" aria-valuenow="92" aria-valuemin="0" aria-valuemax="100"><i style="width:92%"></i></div>
       <div class="delta"><svg><use href="#up"/></svg>12% vs Q2</div>
@@ -289,7 +293,7 @@ textarea[aria-invalid="true"]{border-color:var(--err)}
       <div class="delta"><svg><use href="#down"/></svg>$6 lower than Q2</div>
     </section>
     <section class="card metric s3" aria-label="Organic sessions">
-      <div class="l">Organic sessions <span class="chip ok">Goal met</span></div>
+      <div class="l">Organic visits <span class="chip ok">Goal met</span></div>
       <div class="v">48.2k</div><div class="t">Goal 45k</div>
       <div class="prog" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"><i style="width:100%"></i></div>
       <div class="delta"><svg><use href="#up"/></svg>7% above goal</div>
@@ -314,22 +318,16 @@ textarea[aria-invalid="true"]{border-color:var(--err)}
       <div class="ins">
         <article><h3>Search is carrying lead volume</h3><p>Search leads cost $29, Display leads cost $52. Moving budget to Search is the fastest way back to pace.</p><a class="act" href="#approvals/budget">Review the budget change</a></article>
         <article><h3>Leads slowed after week 32</h3><p>The summer promotion ended and nothing replaced it. The fall launch is scheduled to fill that gap.</p><a class="act" href="#approvals/adset">Review the fall ad set</a></article>
-        <article><h3>The category page rewrite worked</h3><p>Organic sessions beat goal by 7% after the new page template went live.</p><a class="act" href="#projects/pages">See which pages are next</a></article>
       </div>
     </section>
 
-    <section class="card s8" aria-labelledby="pr-h">
+    <section class="card s7" aria-labelledby="pr-h">
       <div class="ch"><h2 id="pr-h">Current projects</h2><a class="btn link" href="#projects">All projects</a></div>
-      <table><thead><tr><th>Project</th><th>Status</th><th class="hide-sm">Owner</th><th>Due</th><th class="hide-sm">Next step</th></tr></thead><tbody id="homeprojects"></tbody></table>
+      <table><thead><tr><th>Project</th><th>Status</th><th>Due</th></tr></thead><tbody id="homeprojects"></tbody></table>
     </section>
 
-    <section class="card s4" aria-labelledby="rp-h">
-      <div class="ch"><h2 id="rp-h">Recent progress</h2><p>Last 14 days</p></div>
-      <ul class="tl" id="progress"></ul>
-    </section>
-
-    <section class="card s12" aria-labelledby="ns-h">
-      <div class="ch"><h2 id="ns-h">Recommended next steps</h2><p>Agreed on the Sep 12 call</p></div>
+    <section class="card s5" aria-labelledby="ns-h">
+      <div class="ch"><h2 id="ns-h">Next steps</h2><p>Agreed on the Sep 12 call</p></div>
       <ol class="steps" id="steps"></ol>
     </section>
   </div>
@@ -406,10 +404,10 @@ const MONTHS = [
   { id: 'jun', name: 'June 2026', sub: 'Sent Jul 1', leads: 70, spend: 3080, revenue: 122000 },
 ];
 const APPROVALS = {
-  adset: { title: 'Fall campaign ad set', line: 'Fall campaign ad set, 6 creatives', sub: 'Revised after your notes on Sep 15 · Paid social', meta: '6 creatives · Paid social · Due tomorrow', chip: ['info', 'Revision 2'], due: 'Due tomorrow', soon: true, eyebrow: 'Paid social · Fall campaign', kind: 'creative', owner: 'Ana',
-    kv: [['Channel', 'Instagram and Facebook'], ['Budget', '$2,400 over 3 weeks'], ['Launch', 'Sep 23'], ['Owner', 'Ana, XPM']],
+  adset: { title: 'Fall campaign ad set', line: 'Fall campaign ad set, 6 creatives', sub: 'Revised after your notes on Sep 15 · Paid social', meta: '6 creatives · Paid social · Due tomorrow', chip: ['info', 'Revision 2'], due: 'Due tomorrow', soon: true, eyebrow: 'Paid social · Fall campaign', kind: 'creative', owner: 'Nora',
+    kv: [['Channel', 'Instagram and Facebook'], ['Budget', '$2,400 over 3 weeks'], ['Launch', 'Sep 23'], ['Owner', 'Nora, XPM']],
     changed: ['Headlines shortened on all 6 creatives', 'Price removed from creative 3', 'Free-shipping line added to every caption'],
-    hist: [['Sep 17', 'Revision 2 sent by Ana'], ['Sep 15', 'You requested changes: "shorter headlines, no prices"'], ['Sep 12', 'Revision 1 sent']],
+    hist: [['Sep 17', 'Revision 2 sent by Nora'], ['Sep 15', 'You requested changes: "shorter headlines, no prices"'], ['Sep 12', 'Revision 1 sent']],
     next: 'If approved, the campaign goes live on Sep 23.', approveLabel: 'Approve all 6' },
   budget: { title: 'Move $300 a month to Search', line: 'Move $300 a month from Display to Search', sub: 'Search leads cost $29, Display leads cost $52 · Paid media', meta: 'From Display · Paid media · Due Sep 20', chip: ['warn', 'Budget change'], due: 'Due Sep 20', soon: true, eyebrow: 'Paid media · Q4 budget', kind: 'budget', owner: 'Leo',
     kv: [['Amount', '$300 a month'], ['From', 'Display'], ['To', 'Search'], ['Owner', 'Leo, XPM']],
@@ -427,7 +425,7 @@ const APPROVALS = {
 };
 const EARLIER_APPROVED = ['Summer sale wrap-up email', 'August report', 'Category page template', 'Search ad copy refresh', 'Retargeting audience list'];
 const PROJECTS = {
-  launch: { name: 'Fall campaign launch', sub: 'Paid social and search', owner: 'Ana, XPM', due: 'Sep 23',
+  launch: { name: 'Fall campaign launch', sub: 'Paid social and search', owner: 'Nora, XPM', due: 'Sep 23',
     miles: [['Brief agreed', 'Aug 28', 1], ['Creatives, revision 1', 'Sep 12', 1], ['Creatives, revision 2', 'Sep 17', 1], ['Your approval', 'Sep 19', 0], ['Launch', 'Sep 23', 0]] },
   scoring: { name: 'CRM lead scoring', sub: 'Routes hot leads to your sales inbox', owner: 'Leo, XPM', due: 'Sep 30', status: ['info', 'In progress'], next: 'Testing on last month’s leads',
     miles: [['Export past leads', 'Sep 3', 1], ['Model drafted on 1,140 past leads', 'Sep 9', 1], ['Test on last month’s leads', 'Sep 24', 0], ['Connect to your sales inbox', 'Sep 30', 0]] },
@@ -435,7 +433,7 @@ const PROJECTS = {
     miles: [['Metrics agreed', 'Sep 5', 1], ['First build', 'Sep 16', 1], ['Walkthrough with you', 'Sep 26', 0], ['Live for Q4', 'Oct 3', 0]] },
   pages: { name: 'Category page rewrite', sub: '12 pages, new template', owner: 'Sam, XPM', due: 'Done Sep 2', status: ['ok', 'Live'], next: 'Roll out to 8 more pages',
     miles: [['New template', 'Aug 14', 1], ['12 pages live', 'Sep 2', 1], ['Organic sessions 7% above goal', 'Sep 17', 1], ['Proposal: 8 more pages', 'Sep 26', 0]] },
-  summer: { name: 'Summer promotion', sub: 'Paid social, email and site banner', owner: 'Ana, XPM', due: 'Ended Aug 31', status: ['neu', 'Complete'], next: 'Results in the August report',
+  summer: { name: 'Summer promotion', sub: 'Paid social, email and site banner', owner: 'Nora, XPM', due: 'Ended Aug 31', status: ['neu', 'Complete'], next: 'Results in the August report',
     miles: [['Launched', 'Jul 8', 1], ['Mid-campaign refresh', 'Aug 1', 1], ['Ended', 'Aug 31', 1]] },
 };
 
@@ -455,7 +453,7 @@ function toast(msg) { const t = $('toast'); t.textContent = msg; t.classList.add
 function launchStatus() {
   const st = S.status.adset;
   if (st === 'approved') return { chip: ['info', 'Scheduled'], next: 'Goes live Sep 23' };
-  if (st === 'changes') return { chip: ['neu', 'Being revised'], next: 'Ana is revising the ad set' };
+  if (st === 'changes') return { chip: ['neu', 'Being revised'], next: 'Nora is revising the ad set' };
   return { chip: ['warn', 'Waiting on you'], next: 'Your approval of the ad set' };
 }
 const projStatus = (id) => (id === 'launch' ? launchStatus().chip : PROJECTS[id].status);
@@ -471,15 +469,13 @@ function renderHome() {
     ? `<div class="top"><div><p class="eyebrow" style="margin:0 0 4px">Needs your decision</p><h2 id="dec-h">${p.length} approval${p.length > 1 ? 's are' : ' is'} holding up the fall launch</h2></div><a class="btn primary" href="#approvals/${p[0]}">Review approvals</a></div>
        <ul class="dlist">${p.map((k) => { const a = APPROVALS[k]; return `<li><div><b><a href="#approvals/${k}" style="color:inherit;text-decoration:none">${a.line}</a></b><span>${a.sub}</span></div>${chip(a.chip)}<span class="due ${a.soon ? 'soon' : ''}">${a.due}</span></li>`; }).join('')}</ul>`
     : `<div class="empty"><p class="eyebrow" style="margin:0">Needs your decision</p><b id="dec-h">Nothing is waiting on you</b><span>New approvals will appear here with a due date and what changed.</span><a class="btn link" href="#approvals">See past approvals</a></div>`;
-  $('homeprojects').innerHTML = ['launch', 'scoring', 'dash', 'pages'].map((id) => { const pr = PROJECTS[id]; return `<tr class="rowbtn" data-go="#projects/${id}"><td class="name"><b>${pr.name}</b><span>${pr.sub}</span></td><td>${chip(projStatus(id))}</td><td class="hide-sm">${pr.owner}</td><td>${pr.due}</td><td class="hide-sm">${projNext(id)}</td></tr>`; }).join('');
-  const prog = [...S.approvedNow.map((k) => ['Today', `You approved: ${APPROVALS[k].title}`, APPROVALS[k].next.replace('If approved, ', '')]), ['Sep 17', 'Ad set revised', 'All 6 creatives updated from your notes'], ['Sep 15', 'Search campaigns restructured', 'Cost per lead down from $41 to $29'], ['Sep 9', 'Lead scoring model drafted', 'Built on 1,140 past leads'], ['Sep 2', 'Category pages live', '12 pages on the new template']].slice(0, 5);
-  $('progress').innerHTML = prog.map(([d, t, s]) => `<li><time>${d}</time><div><b>${t}</b><br>${s}</div></li>`).join('');
+  $('homeprojects').innerHTML = ['launch', 'scoring', 'dash', 'pages'].map((id) => { const pr = PROJECTS[id]; return `<tr class="rowbtn" data-go="#projects/${id}"><td class="name"><b>${pr.name}</b><span>${projNext(id)}</span></td><td>${chip(projStatus(id))}</td><td>${pr.due}</td></tr>`; }).join('');
   const adDone = S.status.adset === 'approved' && S.status.budget === 'approved';
   $('steps').innerHTML = [
     ['01', 'You', 'Approve the fall ad set and budget change', adDone ? 'Done. Thank you.' : 'Both are needed for the Sep 23 launch.', adDone ? '' : `<a class="btn link" href="#approvals/${S.status.adset === 'pending' ? 'adset' : 'budget'}">Review now</a>`],
     ['02', 'You', 'Give XPM access to Shopify', S.shopify ? 'Invite sent. XPM will confirm the connection.' : 'So revenue in this portal comes from orders, not estimates.', S.shopify ? '' : '<button class="btn link" type="button" data-action="shopify">Send invite</button>'],
     ['03', 'XPM', 'Bring a Q4 plan to the Sep 26 call', 'Goals, budget and the pages to rewrite next.', '<a class="btn link" href="#projects/pages">See the page plan</a>'],
-  ].map(([n, o, b, s, a]) => `<li><span class="n">${n}</span><span class="owner">${o}</span><b>${b}</b><span>${s}</span>${a}</li>`).join('');
+  ].map(([n, o, b, s, a]) => `<li><div class="sh"><span class="n">${n}</span><span class="owner">${o}</span></div><b>${b}</b><span>${s}</span>${a}</li>`).join('');
 }
 
 /* ───────── Performance ───────── */
