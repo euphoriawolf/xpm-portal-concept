@@ -407,7 +407,7 @@ footer{max-width:1440px;margin:0 auto;padding:0 64px 40px;font-size:13px;color:v
 <script>
   // Two views, switched by the address hash so each can be linked directly.
   function route() {
-    const v = location.hash === '#approvals' ? 'approvals' : 'home';
+    const v = location.hash === '#approvals' || new URLSearchParams(location.search).get('view') === 'approvals' ? 'approvals' : 'home';
     document.querySelectorAll('.view').forEach((m) => (m.hidden = m.id !== v));
     document.querySelectorAll('nav.main a[data-view]').forEach((a) => a.setAttribute('aria-current', a.dataset.view === v ? 'page' : 'false'));
     window.scrollTo(0, 0);
