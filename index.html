@@ -1,0 +1,414 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>XPM Client Portal Concept</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap">
+<style>
+/* XPM Client Portal concept. Built to XPM Design System v1.0.0 (Mission Control Editorial):
+   Product Interface Mode. Black and white foundation, Space Grotesk for all UI text, Orbitron only
+   for the portal lockup, Signal Blue only for action, focus, progress and info status. */
+:root{
+  --black:#000;--carbon:#0F0D0C;--white:#fff;
+  --n950:#101112;--n900:#1A1C1D;--n800:#2F3132;--n700:#45484A;--n600:#5F6366;--n500:#7D8185;--n400:#A2A5A8;--n300:#C8CACD;--n200:#E2E2E3;--n150:#E8E8E9;--n100:#EEEEEF;--n50:#F9F9FA;
+  --blue:#005EB5;--blue-focus:#0A72D8;--blue-100:#D6E3FF;--blue-50:#EEF5FF;
+  --ok:#14804A;--ok-soft:#DDF5E8;--warn:#7A4A00;--warn-soft:#FFF1D6;--err:#BA1A1A;--err-soft:#FFDAD6;--info:#0A72D8;--info-soft:#D6E3FF;--neu:#5F6366;--neu-soft:#EEEEEF;
+  --bg:var(--n50);--surface:var(--white);--text:var(--n900);--muted:var(--n600);--border:var(--n200);
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--bg);color:var(--text);font-family:"Space Grotesk",system-ui,sans-serif;font-size:16px;line-height:1.5;font-variant-numeric:tabular-nums}
+a{color:var(--blue)}
+:focus-visible{outline:2px solid var(--blue-focus);outline-offset:2px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+
+/* App bar */
+.bar{background:var(--black);color:var(--white);height:68px;display:flex;align-items:center;gap:40px;padding:0 64px;position:sticky;top:0;z-index:5}
+.lockup{display:flex;align-items:center;gap:14px;text-decoration:none;color:var(--white)}
+.lockup img{height:26px;display:block}
+.lockup span{font-family:Orbitron,"Space Grotesk",sans-serif;font-weight:700;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--n300);border-left:1px solid var(--n800);padding-left:14px}
+nav.main{display:flex;gap:4px;height:100%}
+nav.main a{color:var(--n400);text-decoration:none;font-size:14px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;display:flex;align-items:center;gap:8px;padding:0 14px;border-bottom:3px solid transparent;height:100%}
+nav.main a:hover{color:var(--white)}
+nav.main a[aria-current="page"]{color:var(--white);border-bottom-color:var(--blue-focus)}
+.count{background:var(--white);color:var(--black);border-radius:8px;font-size:11px;font-weight:700;padding:1px 7px;letter-spacing:0}
+.who{margin-left:auto;display:flex;align-items:center;gap:12px;font-size:14px;color:var(--n300)}
+.who b{color:var(--white);font-weight:600}
+.avatar{width:36px;height:36px;border-radius:50%;background:var(--n800);color:var(--white);display:grid;place-items:center;font-weight:600;font-size:13px}
+
+/* Page */
+main{max-width:1440px;margin:0 auto;padding:40px 64px 64px}
+.eyebrow{font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:0 0 8px}
+h1{font-size:40px;font-weight:600;line-height:1.15;margin:0;letter-spacing:-.01em}
+.lede{font-size:18px;color:var(--muted);margin:10px 0 0;max-width:62ch}
+.lede b{color:var(--text);font-weight:600}
+.head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;margin-bottom:32px;flex-wrap:wrap}
+.grid{display:grid;grid-template-columns:repeat(12,1fr);gap:24px}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:24px}
+.card h2{font-size:20px;font-weight:600;margin:0}
+.card .ch{display:flex;justify-content:space-between;align-items:baseline;gap:16px;margin-bottom:16px}
+.card .ch p{margin:0;font-size:14px;color:var(--muted)}
+.s12{grid-column:span 12}.s8{grid-column:span 8}.s7{grid-column:span 7}.s5{grid-column:span 5}.s4{grid-column:span 4}.s3{grid-column:span 3}.s6{grid-column:span 6}
+
+/* Buttons */
+.btn{font:inherit;font-size:14px;font-weight:600;border-radius:8px;padding:10px 18px;min-height:44px;display:inline-flex;align-items:center;gap:8px;cursor:pointer;text-decoration:none;border:1px solid transparent}
+.btn.primary{background:var(--black);color:var(--white)}
+.btn.primary:hover{background:var(--n800)}
+.btn.secondary{background:var(--white);color:var(--black);border-color:var(--n300)}
+.btn.secondary:hover{background:var(--n100)}
+.btn.link{background:none;color:var(--blue);padding:0;min-height:auto}
+
+/* Status chips: label always present, color never alone */
+.chip{display:inline-flex;align-items:center;gap:6px;height:26px;padding:0 10px;border-radius:8px;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;white-space:nowrap}
+.chip::before{content:"";width:6px;height:6px;border-radius:50%;background:currentColor}
+.chip.ok{background:var(--ok-soft);color:var(--ok)}.chip.warn{background:var(--warn-soft);color:var(--warn)}.chip.err{background:var(--err-soft);color:var(--err)}.chip.info{background:var(--info-soft);color:var(--blue)}.chip.neu{background:var(--neu-soft);color:var(--neu)}
+
+/* Decision card */
+.decide{border:1px solid var(--black);padding:0;overflow:hidden}
+.decide .top{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:20px 24px;border-bottom:1px solid var(--border)}
+.decide .top h2{font-size:20px}
+.dlist{list-style:none;margin:0;padding:0}
+.dlist li{display:grid;grid-template-columns:1fr auto auto;gap:24px;align-items:center;padding:16px 24px;border-bottom:1px solid var(--border)}
+.dlist li:last-child{border-bottom:0}
+.dlist b{display:block;font-weight:600}
+.dlist span{font-size:14px;color:var(--muted)}
+.due{font-size:14px;color:var(--muted);white-space:nowrap}
+.due.soon{color:var(--warn);font-weight:600}
+
+/* Metric cards */
+.metric .l{font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);display:flex;justify-content:space-between;align-items:center;gap:8px}
+.metric .v{font-size:40px;font-weight:500;line-height:1.1;margin:14px 0 4px;letter-spacing:-.01em}
+.metric .t{font-size:14px;color:var(--muted)}
+.prog{height:4px;background:var(--n100);border-radius:2px;margin:16px 0 10px;overflow:hidden}
+.prog i{display:block;height:100%;background:var(--blue)}
+.delta{font-size:14px;display:flex;gap:6px;align-items:center}
+.delta svg{width:14px;height:14px}
+
+/* Chart */
+.chart svg{width:100%;height:auto;display:block}
+.legend{display:flex;gap:20px;font-size:13px;color:var(--muted);margin-top:8px}
+.legend i{display:inline-block;width:14px;height:0;border-top:3px solid var(--blue);vertical-align:middle;margin-right:6px}
+.legend i.tg{border-top:2px dashed var(--n500)}
+
+/* Insights */
+.ins{display:grid;gap:0}
+.ins article{padding:16px 0;border-top:1px solid var(--border);display:grid;gap:6px}
+.ins article:first-child{border-top:0;padding-top:0}
+.ins h3{font-size:16px;font-weight:600;margin:0}
+.ins p{margin:0;font-size:14px;color:var(--muted)}
+.ins .act{font-size:14px;font-weight:600;color:var(--blue);text-decoration:none}
+
+/* Tables */
+table{width:100%;border-collapse:collapse;font-size:14px}
+th{font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);text-align:left;padding:0 12px 10px;border-bottom:1px solid var(--border)}
+td{padding:14px 12px;border-bottom:1px solid var(--border);vertical-align:middle}
+tr:last-child td{border-bottom:0}
+tbody tr:hover{background:var(--n50)}
+td.name b{font-weight:600;display:block}
+td.name span{color:var(--muted);font-size:13px}
+
+/* Timeline */
+.tl{list-style:none;margin:0;padding:0;display:grid;gap:14px}
+.tl li{display:grid;grid-template-columns:64px 1fr;gap:12px;font-size:14px}
+.tl time{color:var(--muted);font-size:13px}
+.tl b{font-weight:600}
+
+/* Next steps */
+.steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.steps li{display:grid;gap:6px;align-content:start}
+.steps .n{font-size:12px;font-weight:600;letter-spacing:.08em;color:var(--muted)}
+.steps b{font-weight:600}
+.steps span{font-size:14px;color:var(--muted)}
+.owner{font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--text);border:1px solid var(--n300);border-radius:4px;padding:1px 6px;justify-self:start}
+
+/* Approvals view */
+.tabs{display:flex;gap:24px;border-bottom:1px solid var(--border);margin-bottom:24px}
+.tabs a{font-size:14px;font-weight:600;color:var(--muted);text-decoration:none;padding:0 0 12px;border-bottom:3px solid transparent;margin-bottom:-1px}
+.tabs a[aria-selected="true"]{color:var(--text);border-bottom-color:var(--blue-focus)}
+.queue{display:grid;gap:12px;align-content:start}
+.qitem{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:16px 18px;display:grid;gap:8px;text-decoration:none;color:inherit}
+.qitem[aria-current="true"]{border-color:var(--blue-focus);box-shadow:inset 3px 0 0 var(--blue-focus)}
+.qitem .row{display:flex;justify-content:space-between;gap:12px;align-items:center}
+.qitem b{font-weight:600}
+.qitem span{font-size:13px;color:var(--muted)}
+.review{background:var(--surface);border:1px solid var(--border);border-radius:16px;overflow:hidden;display:grid}
+.review .rh{padding:24px 28px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;gap:16px;align-items:flex-start}
+.review .rh h2{font-size:24px;font-weight:600;margin:4px 0 0}
+.rbody{display:grid;grid-template-columns:1.2fr 1fr;gap:0}
+.asset{padding:28px;border-right:1px solid var(--border);display:grid;gap:14px;align-content:start}
+.thumbs{display:grid;grid-template-columns:repeat(6,1fr);gap:8px}
+.thumbs div{aspect-ratio:1;border:1px solid var(--border);border-radius:8px;background:var(--n100);display:grid;place-items:center;font-size:12px;font-weight:600;color:var(--muted)}
+.thumbs div.sel{border-color:var(--blue-focus);background:var(--blue-50);color:var(--blue)}
+.creative{border:1px solid var(--n300);border-radius:12px;overflow:hidden;background:var(--white)}
+.creative .img{aspect-ratio:1.91/1;background:var(--n900);color:var(--white);display:flex;flex-direction:column;justify-content:flex-end;padding:24px;gap:6px;position:relative}
+.creative .img::before{content:"";position:absolute;inset:18px;border:1px solid var(--n700)}
+.creative .img b{font-size:28px;font-weight:700;line-height:1.1;position:relative}
+.creative .img span{font-size:14px;color:var(--n300);position:relative}
+.creative .copy{padding:14px 16px;display:grid;gap:4px;font-size:14px}
+.creative .copy b{font-weight:600}
+.creative .copy span{color:var(--muted)}
+.meta{padding:28px;display:grid;gap:22px;align-content:start}
+.kv{display:grid;grid-template-columns:auto 1fr;gap:10px 20px;font-size:14px;margin:0}
+.kv dt{color:var(--muted)}
+.kv dd{margin:0;font-weight:500}
+.changed{margin:0;padding-left:18px;font-size:14px;display:grid;gap:6px}
+.hist{list-style:none;margin:0;padding:0;display:grid;gap:10px;font-size:13px}
+.hist li{display:grid;grid-template-columns:52px 1fr;gap:10px}
+.hist time{color:var(--muted)}
+label{font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:6px}
+textarea{width:100%;font:inherit;font-size:14px;border:1px solid var(--n300);border-radius:8px;padding:10px 12px;min-height:84px;resize:vertical;background:var(--white)}
+textarea:focus{border-color:var(--blue-focus);outline:none;box-shadow:0 0 0 3px var(--blue-100)}
+.help{font-size:13px;color:var(--muted);margin:6px 0 0}
+.rfoot{padding:18px 28px;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;gap:16px;background:var(--n50)}
+.rfoot .acts{display:flex;gap:12px}
+.sub3{font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:0 0 10px}
+
+footer{max-width:1440px;margin:0 auto;padding:0 64px 40px;font-size:13px;color:var(--muted);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.view[hidden]{display:none}
+
+@media (max-width:1100px){
+  .bar{padding:0 32px;gap:20px}.lockup span{display:none}
+  main{padding:32px}footer{padding:0 32px 32px}
+  .s8,.s7,.s5,.s4,.s6{grid-column:span 12}.s3{grid-column:span 6}
+  .rbody{grid-template-columns:1fr}.asset{border-right:0;border-bottom:1px solid var(--border)}
+}
+@media (max-width:700px){
+  .bar{padding:0 20px;overflow-x:auto}.who span{display:none}
+  nav.main a{padding:0 8px;font-size:12px}
+  main{padding:24px 20px}footer{padding:0 20px 24px}
+  h1{font-size:32px}.s3{grid-column:span 12}
+  .steps{grid-template-columns:1fr}
+  .dlist li{grid-template-columns:1fr;gap:8px}
+  .hide-sm{display:none}
+}
+@media (prefers-reduced-motion:no-preference){.prog i{transition:width .6s ease}}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="up" viewBox="0 0 16 16"><path d="M3 10l5-5 5 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="down" viewBox="0 0 16 16"><path d="M3 6l5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+</svg>
+
+<header class="bar">
+  <a class="lockup" href="#home" aria-label="XPM Client Portal home"><img src="assets/xpm-white.svg" alt="XPM"><span>Client Portal</span></a>
+  <nav class="main" aria-label="Portal">
+    <a href="#home" data-view="home">Home</a>
+    <a href="#home" data-soon>Performance</a>
+    <a href="#home" data-soon>Projects</a>
+    <a href="#approvals" data-view="approvals">Approvals <span class="count" aria-label="3 pending">3</span></a>
+    <a href="#home" data-soon>Reports</a>
+  </nav>
+  <div class="who"><span><b>Maya Chen</b> · Northline Outfitters</span><div class="avatar" aria-hidden="true">MC</div></div>
+</header>
+
+<!-- ───────────────────────── HOME ───────────────────────── -->
+<main class="view" id="home">
+  <div class="head">
+    <div>
+      <p class="eyebrow">Q3 2026 · Week 12 of 13</p>
+      <h1>Northline at a glance</h1>
+      <p class="lede"><b>3 of 4 goals are on track.</b> Lead volume is behind pace, and 3 items need your decision before the fall launch on Sep 23.</p>
+    </div>
+    <a class="btn secondary" href="#home">Download September report</a>
+  </div>
+
+  <div class="grid">
+    <!-- 1. Decisions first: the only thing on this page that is blocked on the client -->
+    <section class="card decide s12" aria-labelledby="dec-h">
+      <div class="top">
+        <div><p class="eyebrow" style="margin:0 0 4px">Needs your decision</p><h2 id="dec-h">3 approvals are holding up the fall launch</h2></div>
+        <a class="btn primary" href="#approvals">Review approvals</a>
+      </div>
+      <ul class="dlist">
+        <li><div><b>Fall campaign ad set, 6 creatives</b><span>Revised after your notes on Sep 15 · Paid social</span></div><span class="chip info">Revision 2</span><span class="due soon">Due tomorrow</span></li>
+        <li><div><b>Move $3,000 from Display to Search</b><span>Search leads cost $29, Display leads cost $52 · Paid media</span></div><span class="chip warn">Budget change</span><span class="due soon">Due Sep 20</span></li>
+        <li><div><b>October email calendar, 5 sends</b><span>First draft · Email</span></div><span class="chip neu">Pending review</span><span class="due">Due Sep 22</span></li>
+      </ul>
+    </section>
+
+    <!-- 2. Goals and KPIs, each with its target and a status in words -->
+    <section class="card metric s3" aria-label="Revenue from marketing">
+      <div class="l">Revenue from marketing <span class="chip ok">On track</span></div>
+      <div class="v">$412k</div>
+      <div class="t">Goal $450k this quarter</div>
+      <div class="prog" role="progressbar" aria-valuenow="92" aria-valuemin="0" aria-valuemax="100"><i style="width:92%"></i></div>
+      <div class="delta"><svg><use href="#up"/></svg>12% vs Q2</div>
+    </section>
+    <section class="card metric s3" aria-label="Qualified leads">
+      <div class="l">Qualified leads <span class="chip warn">At risk</span></div>
+      <div class="v">184</div>
+      <div class="t">Goal 220 · on pace for 194</div>
+      <div class="prog" role="progressbar" aria-valuenow="84" aria-valuemin="0" aria-valuemax="100"><i style="width:84%"></i></div>
+      <div class="delta"><svg><use href="#down"/></svg>10% behind pace</div>
+    </section>
+    <section class="card metric s3" aria-label="Cost per lead">
+      <div class="l">Cost per lead <span class="chip ok">On track</span></div>
+      <div class="v">$38</div>
+      <div class="t">Target $45 or less</div>
+      <div class="prog" role="progressbar" aria-valuenow="84" aria-valuemin="0" aria-valuemax="100"><i style="width:84%"></i></div>
+      <div class="delta"><svg><use href="#down"/></svg>$6 lower than Q2</div>
+    </section>
+    <section class="card metric s3" aria-label="Organic sessions">
+      <div class="l">Organic sessions <span class="chip ok">Goal met</span></div>
+      <div class="v">48.2k</div>
+      <div class="t">Goal 45k</div>
+      <div class="prog" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"><i style="width:100%"></i></div>
+      <div class="delta"><svg><use href="#up"/></svg>7% above goal</div>
+    </section>
+
+    <!-- 3. The one trend worth watching, and what it means -->
+    <section class="card chart s7" aria-labelledby="ch-h">
+      <div class="ch"><h2 id="ch-h">Qualified leads by week</h2><p>Target pace vs actual</p></div>
+      <svg viewBox="0 0 640 240" role="img" aria-label="Weekly qualified leads for 12 weeks against a target pace of 17 a week. Actual fell below pace from week 33.">
+        <g stroke="#E2E2E3" stroke-width="1">
+          <line x1="40" y1="30" x2="630" y2="30"/><line x1="40" y1="90" x2="630" y2="90"/><line x1="40" y1="150" x2="630" y2="150"/><line x1="40" y1="210" x2="630" y2="210"/>
+        </g>
+        <g fill="#7D8185" font-size="11" font-family="Space Grotesk">
+          <text x="30" y="34" text-anchor="end">24</text><text x="30" y="94" text-anchor="end">16</text><text x="30" y="154" text-anchor="end">8</text><text x="30" y="214" text-anchor="end">0</text>
+          <text x="40" y="232">Wk 27</text><text x="335" y="232" text-anchor="middle">Wk 33</text><text x="630" y="232" text-anchor="end">Wk 38</text>
+        </g>
+        <line x1="40" y1="82.5" x2="630" y2="82.5" stroke="#7D8185" stroke-width="2" stroke-dasharray="6 5"/>
+        <polyline fill="none" stroke="#005EB5" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"
+          points="40.0,90.0 93.6,75.0 147.3,82.5 200.9,67.5 254.5,75.0 308.2,82.5 361.8,97.5 415.5,105.0 469.1,112.5 522.7,97.5 576.4,120.0 630.0,135.0"/>
+        <circle cx="630" cy="135" r="5" fill="#005EB5"/>
+        <text x="620" y="160" text-anchor="end" font-size="12" font-weight="600" fill="#1A1C1D" font-family="Space Grotesk">10 this week</text>
+        <text x="620" y="74" text-anchor="end" font-size="12" fill="#5F6366" font-family="Space Grotesk">Pace: 17 a week</text>
+      </svg>
+      <div class="legend"><span><i></i>Qualified leads</span><span><i class="tg"></i>Target pace</span></div>
+    </section>
+
+    <section class="card s5" aria-labelledby="in-h">
+      <div class="ch"><h2 id="in-h">What we are seeing</h2><p>Updated Sep 17</p></div>
+      <div class="ins">
+        <article><h3>Search is carrying lead volume</h3><p>Search leads cost $29, Display leads cost $52. Moving budget to Search is the fastest way back to pace.</p><a class="act" href="#approvals">Review the budget change</a></article>
+        <article><h3>Leads slowed after week 32</h3><p>The summer promotion ended and nothing replaced it. The fall launch is scheduled to fill that gap.</p><a class="act" href="#approvals">Approve the fall ad set</a></article>
+        <article><h3>The category page rewrite worked</h3><p>Organic sessions beat goal by 7% after the new page template went live.</p><a class="act" href="#home">See which pages are next</a></article>
+      </div>
+    </section>
+
+    <!-- 4. Work in flight, with an owner and a next step on every row -->
+    <section class="card s8" aria-labelledby="pr-h">
+      <div class="ch"><h2 id="pr-h">Current projects</h2><a class="btn link" href="#home">All projects</a></div>
+      <table>
+        <thead><tr><th>Project</th><th>Status</th><th class="hide-sm">Owner</th><th>Due</th><th class="hide-sm">Next step</th></tr></thead>
+        <tbody>
+          <tr><td class="name"><b>Fall campaign launch</b><span>Paid social and search</span></td><td><span class="chip warn">Waiting on you</span></td><td class="hide-sm">Ana, XPM</td><td>Sep 23</td><td class="hide-sm">Your approval of the ad set</td></tr>
+          <tr><td class="name"><b>CRM lead scoring</b><span>Routes hot leads to your sales inbox</span></td><td><span class="chip info">In progress</span></td><td class="hide-sm">Leo, XPM</td><td>Sep 30</td><td class="hide-sm">Testing on last month's leads</td></tr>
+          <tr><td class="name"><b>Q4 reporting dashboard</b><span>One view of spend, leads and revenue</span></td><td><span class="chip neu">Pending review</span></td><td class="hide-sm">Leo, XPM</td><td>Oct 3</td><td class="hide-sm">Walkthrough on the Sep 26 call</td></tr>
+          <tr><td class="name"><b>Category page rewrite</b><span>12 pages, new template</span></td><td><span class="chip ok">Live</span></td><td class="hide-sm">Sam, XPM</td><td>Done Sep 2</td><td class="hide-sm">Roll out to 8 more pages</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="card s4" aria-labelledby="rp-h">
+      <div class="ch"><h2 id="rp-h">Recent progress</h2><p>Last 14 days</p></div>
+      <ul class="tl">
+        <li><time datetime="2026-09-17">Sep 17</time><div><b>Ad set revised</b><br>All 6 creatives updated from your notes</div></li>
+        <li><time datetime="2026-09-15">Sep 15</time><div><b>Search campaigns restructured</b><br>Cost per lead down from $41 to $29</div></li>
+        <li><time datetime="2026-09-09">Sep 9</time><div><b>Lead scoring model drafted</b><br>Built on 1,140 past leads</div></li>
+        <li><time datetime="2026-09-02">Sep 2</time><div><b>Category pages live</b><br>12 pages on the new template</div></li>
+      </ul>
+    </section>
+
+    <!-- 5. Next steps, split by who owns them -->
+    <section class="card s12" aria-labelledby="ns-h">
+      <div class="ch"><h2 id="ns-h">Recommended next steps</h2><p>Agreed on the Sep 12 call</p></div>
+      <ol class="steps">
+        <li><span class="n">01</span><span class="owner">You</span><b>Approve the fall ad set and budget change</b><span>Both are needed for the Sep 23 launch.</span></li>
+        <li><span class="n">02</span><span class="owner">You</span><b>Give XPM access to Shopify</b><span>So revenue in this portal comes from orders, not estimates.</span></li>
+        <li><span class="n">03</span><span class="owner">XPM</span><b>Bring a Q4 plan to the Sep 26 call</b><span>Goals, budget and the pages to rewrite next.</span></li>
+      </ol>
+    </section>
+  </div>
+</main>
+
+<!-- ───────────────────────── APPROVALS ───────────────────────── -->
+<main class="view" id="approvals" hidden>
+  <div class="head">
+    <div>
+      <p class="eyebrow">Approvals</p>
+      <h1>3 items need your decision</h1>
+      <p class="lede">Nothing goes live without your approval. Each item shows what changed and what happens next.</p>
+    </div>
+  </div>
+
+  <nav class="tabs" aria-label="Approval status">
+    <a href="#approvals" aria-selected="true">Pending (3)</a>
+    <a href="#approvals" aria-selected="false">Changes requested (1)</a>
+    <a href="#approvals" aria-selected="false">Approved (14)</a>
+  </nav>
+
+  <div class="grid">
+    <div class="queue s4">
+      <a class="qitem" href="#approvals" aria-current="true">
+        <div class="row"><b>Fall campaign ad set</b><span class="chip info">Revision 2</span></div>
+        <span>6 creatives · Paid social · Due tomorrow</span>
+      </a>
+      <a class="qitem" href="#approvals">
+        <div class="row"><b>Move $3,000 to Search</b><span class="chip warn">Budget</span></div>
+        <span>From Display · Paid media · Due Sep 20</span>
+      </a>
+      <a class="qitem" href="#approvals">
+        <div class="row"><b>October email calendar</b><span class="chip neu">Draft</span></div>
+        <span>5 sends · Email · Due Sep 22</span>
+      </a>
+    </div>
+
+    <section class="review s8" aria-labelledby="rv-h">
+      <div class="rh">
+        <div><p class="eyebrow" style="margin:0">Paid social · Fall campaign</p><h2 id="rv-h">Fall campaign ad set</h2></div>
+        <span class="chip info">Revision 2 of 2</span>
+      </div>
+      <div class="rbody">
+        <div class="asset">
+          <p class="sub3" style="margin:0">Creative 1 of 6</p>
+          <div class="creative">
+            <div class="img"><b>Built for the first cold morning.</b><span>Fall layers, in stock now</span></div>
+            <div class="copy"><b>Northline Outfitters</b><span>Layer up before the weather does. Free shipping over $75.</span></div>
+          </div>
+          <div class="thumbs" aria-label="All creatives"><div class="sel">1</div><div>2</div><div>3</div><div>4</div><div>5</div><div>6</div></div>
+        </div>
+        <div class="meta">
+          <dl class="kv">
+            <dt>Channel</dt><dd>Instagram and Facebook</dd>
+            <dt>Budget</dt><dd>$8,000 over 3 weeks</dd>
+            <dt>Launch</dt><dd>Sep 23</dd>
+            <dt>Owner</dt><dd>Ana, XPM</dd>
+          </dl>
+          <div><p class="sub3">What changed since your notes</p>
+            <ul class="changed"><li>Headlines shortened on all 6 creatives</li><li>Price removed from creative 3</li><li>Free-shipping line added to every caption</li></ul>
+          </div>
+          <div><p class="sub3">History</p>
+            <ul class="hist"><li><time>Sep 17</time><span>Revision 2 sent by Ana</span></li><li><time>Sep 15</time><span>You requested changes: "shorter headlines, no prices"</span></li><li><time>Sep 12</time><span>Revision 1 sent</span></li></ul>
+          </div>
+          <div><label for="note">Note to XPM (optional)</label><textarea id="note" placeholder="Add a note for Ana"></textarea><p class="help">Required only if you request changes.</p></div>
+        </div>
+      </div>
+      <div class="rfoot">
+        <span class="help" style="margin:0">If approved, the campaign goes live on Sep 23.</span>
+        <div class="acts"><button class="btn secondary" type="button">Request changes</button><button class="btn primary" type="button">Approve all 6</button></div>
+      </div>
+    </section>
+  </div>
+</main>
+
+<footer><span>Concept mockup · sample client and data · built to XPM Design System v1.0.0</span><span>Space Grotesk and Orbitron · black and white foundation · Signal Blue for action and status</span></footer>
+
+<script>
+  // Two views, switched by the address hash so each can be linked directly.
+  function route() {
+    const v = location.hash === '#approvals' ? 'approvals' : 'home';
+    document.querySelectorAll('.view').forEach((m) => (m.hidden = m.id !== v));
+    document.querySelectorAll('nav.main a[data-view]').forEach((a) => a.setAttribute('aria-current', a.dataset.view === v ? 'page' : 'false'));
+    window.scrollTo(0, 0);
+  }
+  window.addEventListener('hashchange', route);
+  route();
+</script>
+</body>
+</html>
